@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activation · MalChain</title>
+<meta name="description" content="Running malicious code">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/style.css?v=1783878887">
+<script>window.SITE_ROOT="../../";</script>
+<script src="../../assets/ioc-config.js?v=1783878887"></script>
+<link rel="canonical" href="https://malchain.in/p/act/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MalChain">
+<meta property="og:title" content="Activation · MalChain">
+<meta property="og:description" content="Running malicious code">
+<meta property="og:url" content="https://malchain.in/p/act/index.html">
+<meta property="og:image" content="https://malchain.in/assets/cover.png">
+<meta property="og:image:alt" content="MalChain — malware kill-chain framework">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Activation · MalChain">
+<meta name="twitter:description" content="Running malicious code">
+<meta name="twitter:image" content="https://malchain.in/assets/cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Activation \u00b7 MalChain","headline":"Activation \u00b7 MalChain","description":"Running malicious code","url":"https://malchain.in/p/act/index.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"MalChain","url":"https://malchain.in/"},"publisher":{"@type":"Organization","name":"Malwarehunts","url":"https://malwarehunts.com"}}</script>
+</head>
+<body>
+<header class="topbar">
+  <button class="hamb" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <a class="brand" href="../../index.html"><span class="mark"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="wm">Mal<b>Chain</b></span></a>
+  <span class="spacer"></span>
+  <a class="tlink" href="../../detections.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><span>Detections</span></a>
+  <a class="tlink" href="https://github.com/Malwarehunts/Malchain" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+</header>
+<div class="shell">
+  <aside class="sidebar"><a class="nav-single " href="../../index.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Home</a>
+<a class="nav-single " href="../../overview.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Framework Overview</a>
+<div class="nav-h">Phases</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg><span>Ingress</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/ing/index.html"><span class="tid">ING</span> Phase overview</a></li>
+    <li><a class="" href="../../p/ing/mc-ing-01.html"><span class="tid">ING-01</span> Removable Media &amp; File Transfer</a></li><li><a class="" href="../../p/ing/mc-ing-02.html"><span class="tid">ING-02</span> Malvertising &amp; Drive-By Downloads</a></li><li><a class="" href="../../p/ing/mc-ing-03.html"><span class="tid">ING-03</span> Supply Chain Compromise</a></li><li><a class="" href="../../p/ing/mc-ing-04.html"><span class="tid">ING-04</span> Credential Abuse</a></li><li><a class="" href="../../p/ing/mc-ing-05.html"><span class="tid">ING-05</span> Malicious or Compromised USB Devices</a></li><li><a class="" href="../../p/ing/mc-ing-06.html"><span class="tid">ING-06</span> Watering Hole Attacks</a></li><li><a class="" href="../../p/ing/mc-ing-07.html"><span class="tid">ING-07</span> External Remote Services</a></li>
+  </ul>
+</div>
+<div class="nav-sec open">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Activation</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="active" href="../../p/act/index.html"><span class="tid">ACT</span> Phase overview</a></li>
+    <li><a class="" href="../../p/act/mc-act-01.html"><span class="tid">ACT-01</span> User-Executed Files</a></li><li><a class="" href="../../p/act/mc-act-02.html"><span class="tid">ACT-02</span> Script-Based Execution</a></li><li><a class="" href="../../p/act/mc-act-03.html"><span class="tid">ACT-03</span> Service-Based Execution</a></li><li><a class="" href="../../p/act/mc-act-04.html"><span class="tid">ACT-04</span> DLL Side-Loading or Hijacking</a></li><li><a class="" href="../../p/act/mc-act-05.html"><span class="tid">ACT-05</span> WMI-Based Execution</a></li><li><a class="" href="../../p/act/mc-act-06.html"><span class="tid">ACT-06</span> Browser Extension Execution</a></li><li><a class="" href="../../p/act/mc-act-07.html"><span class="tid">ACT-07</span> Boot / Firmware Execution</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg><span>Anchoring</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/anc/index.html"><span class="tid">ANC</span> Phase overview</a></li>
+    <li><a class="" href="../../p/anc/mc-anc-01.html"><span class="tid">ANC-01</span> Startup &amp; Logon Execution</a></li><li><a class="" href="../../p/anc/mc-anc-02.html"><span class="tid">ANC-02</span> Scheduled &amp; Triggered Execution</a></li><li><a class="" href="../../p/anc/mc-anc-03.html"><span class="tid">ANC-03</span> Service &amp; Daemon Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-04.html"><span class="tid">ANC-04</span> Registry-Based Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-05.html"><span class="tid">ANC-05</span> Browser-Based Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-06.html"><span class="tid">ANC-06</span> WMI &amp; Event Subscription Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-07.html"><span class="tid">ANC-07</span> Fileless &amp; In-Memory Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-08.html"><span class="tid">ANC-08</span> Boot &amp; Pre-OS Persistence</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span>Concealment</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/con/index.html"><span class="tid">CON</span> Phase overview</a></li>
+    <li><a class="" href="../../p/con/mc-con-01.html"><span class="tid">CON-01</span> Obfuscation &amp; Packing</a></li><li><a class="" href="../../p/con/mc-con-02.html"><span class="tid">CON-02</span> Fileless Malware Execution</a></li><li><a class="" href="../../p/con/mc-con-03.html"><span class="tid">CON-03</span> Security Tool Tampering</a></li><li><a class="" href="../../p/con/mc-con-04.html"><span class="tid">CON-04</span> Masquerading &amp; Impersonation</a></li><li><a class="" href="../../p/con/mc-con-05.html"><span class="tid">CON-05</span> Environment &amp; Sandbox Evasion</a></li><li><a class="" href="../../p/con/mc-con-06.html"><span class="tid">CON-06</span> Process Injection</a></li><li><a class="" href="../../p/con/mc-con-07.html"><span class="tid">CON-07</span> Polymorphism &amp; Metamorphism</a></li><li><a class="" href="../../p/con/mc-con-08.html"><span class="tid">CON-08</span> Log &amp; Artifact Manipulation</a></li><li><a class="" href="../../p/con/mc-con-09.html"><span class="tid">CON-09</span> Living-off-the-Land for Evasion</a></li><li><a class="" href="../../p/con/mc-con-10.html"><span class="tid">CON-10</span> Anti-Forensics &amp; Cleanup</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg><span>Expansion</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/exp/index.html"><span class="tid">EXP</span> Phase overview</a></li>
+    <li><a class="" href="../../p/exp/mc-exp-01.html"><span class="tid">EXP-01</span> Living-off-the-Land Lateral Movement</a></li><li><a class="" href="../../p/exp/mc-exp-02.html"><span class="tid">EXP-02</span> Credential Reuse &amp; Relay</a></li><li><a class="" href="../../p/exp/mc-exp-03.html"><span class="tid">EXP-03</span> Pass-the-Hash / Pass-the-Ticket</a></li><li><a class="" href="../../p/exp/mc-exp-04.html"><span class="tid">EXP-04</span> Remote Service &amp; Protocol Abuse</a></li><li><a class="" href="../../p/exp/mc-exp-05.html"><span class="tid">EXP-05</span> Network Share Propagation</a></li><li><a class="" href="../../p/exp/mc-exp-06.html"><span class="tid">EXP-06</span> Worm-like Self-Propagation</a></li><li><a class="" href="../../p/exp/mc-exp-07.html"><span class="tid">EXP-07</span> Privilege Escalation Across Hosts</a></li><li><a class="" href="../../p/exp/mc-exp-08.html"><span class="tid">EXP-08</span> Identity &amp; Trust Relationship Abuse</a></li><li><a class="" href="../../p/exp/mc-exp-09.html"><span class="tid">EXP-09</span> Directory Services Targeting</a></li><li><a class="" href="../../p/exp/mc-exp-10.html"><span class="tid">EXP-10</span> Cloud &amp; Hybrid Lateral Movement</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>Extraction</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/ext/index.html"><span class="tid">EXT</span> Phase overview</a></li>
+    <li><a class="" href="../../p/ext/mc-ext-01.html"><span class="tid">EXT-01</span> HTTP / HTTPS Data Exfiltration</a></li><li><a class="" href="../../p/ext/mc-ext-02.html"><span class="tid">EXT-02</span> DNS Tunneling</a></li><li><a class="" href="../../p/ext/mc-ext-03.html"><span class="tid">EXT-03</span> Cloud Storage Abuse</a></li><li><a class="" href="../../p/ext/mc-ext-04.html"><span class="tid">EXT-04</span> Messaging and Social Platform Channels</a></li><li><a class="" href="../../p/ext/mc-ext-05.html"><span class="tid">EXT-05</span> FTP / SFTP / FTPS Transfer</a></li><li><a class="" href="../../p/ext/mc-ext-06.html"><span class="tid">EXT-06</span> Tor / Proxy / VPN Anonymization Channels</a></li><li><a class="" href="../../p/ext/mc-ext-07.html"><span class="tid">EXT-07</span> Encrypted Command-and-Control Channels</a></li><li><a class="" href="../../p/ext/mc-ext-08.html"><span class="tid">EXT-08</span> Removable Media Data Extraction</a></li><li><a class="" href="../../p/ext/mc-ext-09.html"><span class="tid">EXT-09</span> Steganographic Data Transfer</a></li><li><a class="" href="../../p/ext/mc-ext-10.html"><span class="tid">EXT-10</span> Multi-Channel Redundant Exfiltration</a></li>
+  </ul>
+</div>
+<div class="nav-h">Resources</div>
+<a class="nav-single " href="../../detections.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>Detection Library</a>
+<a class="nav-single " href="../../mappings.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Mappings</a>
+<a class="nav-single " href="../../ioc.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>IOC Lookup</a>
+<a class="nav-single " href="../../linking.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Chain Linking</a>
+<a class="nav-single " href="../../linkage.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>Linkage Map</a>
+<a class="nav-single " href="../../about.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>About</a></aside>
+  <div class="scrim"></div>
+  <main class="content"><div class="page"><nav class="crumb"><a href="../../index.html">Home</a><span class="sep">/</span><span>Activation</span></nav><div style="display:flex;gap:16px;align-items:center;margin-bottom:6px"><span class="phase-ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><div><div style="display:flex;gap:8px;align-items:center"><span class="pill red">ACT</span><span class="pill ghost">Execution</span></div><h1 style="margin:.15em 0 0">Activation</h1></div></div><p style="color:var(--muted);font-size:1.05rem">Running malicious code. 7 techniques.</p><div class="prose"><h2>Phase Overview</h2>
+<p>The ACTIVATION phase encompasses all techniques and capabilities that result in attacker-controlled logic being executed within an environment. Unlike INGRESS, which focuses on entry and trust establishment, ACTIVATION focuses on process creation, runtime control, and operational capability. The transition from ACTIVATION to ANCHORING occurs when execution becomes repeatable or persistent without requiring repeated access events. This transition point is critical for containment and response.</p>
+<p>ACTIVATION ends when persistence becomes reliable, at which point ANCHORING begins. ACTIVATION capabilities are defined by the mechanism used to execute logic within the system:</p>
+<ul>
+<li>User execution trust (human-triggered actions)</li>
+<li>Interpreter trust (scripts and runtime engines)</li>
+<li>Service and system process trust</li>
+<li>Application and library loading trust</li>
+<li>Management interface trust (administrative tooling)</li>
+<li>Firmware and boot trust (pre-operating system control)</li>
+<li>Scheduled or automated execution trust</li>
+</ul>
+<p>Defensive efforts during ACTIVATION should prioritize visibility into:</p>
+<ul>
+<li>Process creation and execution context</li>
+<li>Command-line and script interpreter usage</li>
+<li>Service and scheduled task creation</li>
+<li>Module and library loading behavior</li>
+<li>Remote command execution activity</li>
+<li>Privilege changes and execution scope</li>
+</ul>
+<h2>Compilation table</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Trust Abused</th>
+<th>Typical Output</th>
+<th>Detection Priority</th>
+<th>Telemetry Source</th>
+<th>Best Disruption Point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Execution</td>
+<td>User Trust</td>
+<td>Process Creation</td>
+<td>High</td>
+<td>Endpoint</td>
+<td>Application Control</td>
+</tr>
+<tr>
+<td>Script Execution</td>
+<td>Interpreter</td>
+<td>Script Runtime</td>
+<td>High</td>
+<td>Endpoint</td>
+<td>Script Blocking</td>
+</tr>
+<tr>
+<td>Service Execution</td>
+<td>System Services</td>
+<td>Service Process</td>
+<td>High</td>
+<td>Endpoint</td>
+<td>Service Monitoring</td>
+</tr>
+<tr>
+<td>DLL Side-Loading</td>
+<td>Application Trust</td>
+<td>Module Load</td>
+<td>Critical</td>
+<td>Endpoint</td>
+<td>Library Validation</td>
+</tr>
+<tr>
+<td>WMI Execution</td>
+<td>Management Interface</td>
+<td>Remote Execution</td>
+<td>High</td>
+<td>Endpoint, Network</td>
+<td>WMI Restrictions</td>
+</tr>
+<tr>
+<td>Scheduled / Task Execution</td>
+<td>Scheduler Trust</td>
+<td>Recurring Execution</td>
+<td>High</td>
+<td>Endpoint</td>
+<td>Task Restrictions</td>
+</tr>
+<tr>
+<td>Browser Extension Execution</td>
+<td>Browser Trust</td>
+<td>Extension Runtime</td>
+<td>Medium</td>
+<td>Endpoint</td>
+<td>Extension Control</td>
+</tr>
+<tr>
+<td>Boot / Firmware Execution</td>
+<td>Firmware / Boot</td>
+<td>Pre-OS Execution</td>
+<td>Critical</td>
+<td>Endpoint</td>
+<td>Secure Boot</td>
+</tr>
+<tr>
+<td>Remote Command Execution</td>
+<td>Remote Admin Tools</td>
+<td>Remote Process</td>
+<td>High</td>
+<td>Endpoint, Network</td>
+<td>Access Control</td>
+</tr>
+<tr>
+<td>Embedded / API Execution</td>
+<td>Application APIs</td>
+<td>Programmatic Execution</td>
+<td>Medium</td>
+<td>Endpoint</td>
+<td>API Restrictions</td>
+</tr>
+</tbody>
+</table></div></div><h2>Techniques</h2><p style="color:var(--muted);margin-top:-.2em">Select a technique for its summary, detections and chain linking.</p><div class="grid" style="gap:12px"><a class="tcard" href="../../p/act/mc-act-01.html"><span class="tnum">01</span><div style="min-width:0"><h3>User-Executed Files</h3><p>This capability relies on user interaction to initiate execution of attacker-controlled files. Execution often occurs through email attachments, downloads, shared files, or removable media. The success of this capability depends on social engineering, trust in file sources, and user behavior. Security awareness, application control, and file reputation systems are critical defensive measures.</p></div><span class="chip">KQL &middot; YARA</span></a><a class="tcard" href="../../p/act/mc-act-02.html"><span class="tnum">02</span><div style="min-width:0"><h3>Script-Based Execution</h3><p>This capability leverages scripting environments to execute commands or payloads without requiring compiled binaries. Attackers use interpreters such as command shells or scripting engines to perform system actions dynamically. Script execution enables flexible control, rapid deployment, and fileless operation. Monitoring interpreter usage and command execution patterns is essential for detection.</p></div><span class="chip">KQL &middot; YARA</span></a><a class="tcard" href="../../p/act/mc-act-03.html"><span class="tnum">03</span><div style="min-width:0"><h3>Service-Based Execution</h3><p>Service-based execution abuses trusted system services to run attacker-controlled processes. Attackers create or modify services to execute code automatically or with elevated privileges. Because services are designed for persistent and privileged operation, misuse can provide reliable system control. Service configuration monitoring and privilege management are key defensive controls.</p></div><span class="chip">KQL</span></a><a class="tcard" href="../../p/act/mc-act-04.html"><span class="tnum">04</span><div style="min-width:0"><h3>DLL Side-Loading or Hijacking</h3><p>This capability exploits the way applications load libraries during execution. Attackers place malicious libraries in locations where trusted applications will load them automatically. The trusted application executes the malicious code without direct user interaction. Library validation and application integrity controls are important defensive measures.</p></div><span class="chip">KQL &middot; YARA</span></a><a class="tcard" href="../../p/act/mc-act-05.html"><span class="tnum">05</span><div style="min-width:0"><h3>WMI-Based Execution</h3><p>Windows Management Instrumentation (WMI) execution uses built-in administrative interfaces to run commands or scripts remotely or locally. Attackers leverage WMI to execute logic without creating traditional processes or files. Because WMI is a legitimate management tool, misuse can blend with normal administrative activity. Monitoring administrative command execution and remote management activity is critical.</p></div><span class="chip">KQL</span></a><a class="tcard" href="../../p/act/mc-act-06.html"><span class="tnum">06</span><div style="min-width:0"><h3>Browser Extension Execution</h3><p>Browser extension execution abuses the trust placed in browser add-ons or plugins. Attackers install or modify extensions to execute scripts within browser sessions. Because extensions operate within trusted user environments, they can access credentials, sessions, and data. Extension management and browser security policies are important defensive controls.</p></div><span class="chip">KQL &middot; YARA</span></a><a class="tcard" href="../../p/act/mc-act-07.html"><span class="tnum">07</span><div style="min-width:0"><h3>Boot / Firmware Execution</h3><p>Boot or firmware execution occurs before the operating system fully initializes. Attackers modify firmware or boot components to execute code at system startup. This capability provides deep system control and can bypass operating system defenses. Secure boot mechanisms and firmware integrity validation are critical defensive measures.</p></div><span class="chip">KQL</span></a></div></div></main>
+</div>
+<footer class="footer"><span>Mal<b>Chain</b> — behaviour-centric malware kill-chain framework</span><span>·</span><span>52 techniques · 52 KQL · 30 YARA</span><span>·</span><a href="https://malwarehunts.com" target="_blank" rel="noopener">malwarehunts.com</a></footer>
+<script src="../../assets/app.js?v=1783878887"></script>
+</body>
+</html>

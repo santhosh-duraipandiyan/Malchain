@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FTP / SFTP / FTPS Transfer · MalChain</title>
+<meta name="description" content="FTP / SFTP / FTPS Transfer refers to the use of file transfer protocols to move attacker-controlled data between a target environment and external systems.">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/style.css?v=1783878887">
+<script>window.SITE_ROOT="../../";</script>
+<script src="../../assets/ioc-config.js?v=1783878887"></script>
+<link rel="canonical" href="https://malchain.in/p/ext/mc-ext-05.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MalChain">
+<meta property="og:title" content="FTP / SFTP / FTPS Transfer · MalChain">
+<meta property="og:description" content="FTP / SFTP / FTPS Transfer refers to the use of file transfer protocols to move attacker-controlled data between a target environment and external systems.">
+<meta property="og:url" content="https://malchain.in/p/ext/mc-ext-05.html">
+<meta property="og:image" content="https://malchain.in/assets/cover.png">
+<meta property="og:image:alt" content="MalChain — malware kill-chain framework">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FTP / SFTP / FTPS Transfer · MalChain">
+<meta name="twitter:description" content="FTP / SFTP / FTPS Transfer refers to the use of file transfer protocols to move attacker-controlled data between a target environment and external systems.">
+<meta name="twitter:image" content="https://malchain.in/assets/cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"FTP / SFTP / FTPS Transfer \u00b7 MalChain","headline":"FTP / SFTP / FTPS Transfer \u00b7 MalChain","description":"FTP / SFTP / FTPS Transfer refers to the use of file transfer protocols to move attacker-controlled data between a target environment and external systems.","url":"https://malchain.in/p/ext/mc-ext-05.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"MalChain","url":"https://malchain.in/"},"publisher":{"@type":"Organization","name":"Malwarehunts","url":"https://malwarehunts.com"}}</script>
+</head>
+<body>
+<header class="topbar">
+  <button class="hamb" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <a class="brand" href="../../index.html"><span class="mark"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="wm">Mal<b>Chain</b></span></a>
+  <span class="spacer"></span>
+  <a class="tlink" href="../../detections.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><span>Detections</span></a>
+  <a class="tlink" href="https://github.com/Malwarehunts/Malchain" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+</header>
+<div class="shell">
+  <aside class="sidebar"><a class="nav-single " href="../../index.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Home</a>
+<a class="nav-single " href="../../overview.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Framework Overview</a>
+<div class="nav-h">Phases</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg><span>Ingress</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/ing/index.html"><span class="tid">ING</span> Phase overview</a></li>
+    <li><a class="" href="../../p/ing/mc-ing-01.html"><span class="tid">ING-01</span> Removable Media &amp; File Transfer</a></li><li><a class="" href="../../p/ing/mc-ing-02.html"><span class="tid">ING-02</span> Malvertising &amp; Drive-By Downloads</a></li><li><a class="" href="../../p/ing/mc-ing-03.html"><span class="tid">ING-03</span> Supply Chain Compromise</a></li><li><a class="" href="../../p/ing/mc-ing-04.html"><span class="tid">ING-04</span> Credential Abuse</a></li><li><a class="" href="../../p/ing/mc-ing-05.html"><span class="tid">ING-05</span> Malicious or Compromised USB Devices</a></li><li><a class="" href="../../p/ing/mc-ing-06.html"><span class="tid">ING-06</span> Watering Hole Attacks</a></li><li><a class="" href="../../p/ing/mc-ing-07.html"><span class="tid">ING-07</span> External Remote Services</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Activation</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/act/index.html"><span class="tid">ACT</span> Phase overview</a></li>
+    <li><a class="" href="../../p/act/mc-act-01.html"><span class="tid">ACT-01</span> User-Executed Files</a></li><li><a class="" href="../../p/act/mc-act-02.html"><span class="tid">ACT-02</span> Script-Based Execution</a></li><li><a class="" href="../../p/act/mc-act-03.html"><span class="tid">ACT-03</span> Service-Based Execution</a></li><li><a class="" href="../../p/act/mc-act-04.html"><span class="tid">ACT-04</span> DLL Side-Loading or Hijacking</a></li><li><a class="" href="../../p/act/mc-act-05.html"><span class="tid">ACT-05</span> WMI-Based Execution</a></li><li><a class="" href="../../p/act/mc-act-06.html"><span class="tid">ACT-06</span> Browser Extension Execution</a></li><li><a class="" href="../../p/act/mc-act-07.html"><span class="tid">ACT-07</span> Boot / Firmware Execution</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg><span>Anchoring</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/anc/index.html"><span class="tid">ANC</span> Phase overview</a></li>
+    <li><a class="" href="../../p/anc/mc-anc-01.html"><span class="tid">ANC-01</span> Startup &amp; Logon Execution</a></li><li><a class="" href="../../p/anc/mc-anc-02.html"><span class="tid">ANC-02</span> Scheduled &amp; Triggered Execution</a></li><li><a class="" href="../../p/anc/mc-anc-03.html"><span class="tid">ANC-03</span> Service &amp; Daemon Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-04.html"><span class="tid">ANC-04</span> Registry-Based Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-05.html"><span class="tid">ANC-05</span> Browser-Based Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-06.html"><span class="tid">ANC-06</span> WMI &amp; Event Subscription Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-07.html"><span class="tid">ANC-07</span> Fileless &amp; In-Memory Persistence</a></li><li><a class="" href="../../p/anc/mc-anc-08.html"><span class="tid">ANC-08</span> Boot &amp; Pre-OS Persistence</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span>Concealment</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/con/index.html"><span class="tid">CON</span> Phase overview</a></li>
+    <li><a class="" href="../../p/con/mc-con-01.html"><span class="tid">CON-01</span> Obfuscation &amp; Packing</a></li><li><a class="" href="../../p/con/mc-con-02.html"><span class="tid">CON-02</span> Fileless Malware Execution</a></li><li><a class="" href="../../p/con/mc-con-03.html"><span class="tid">CON-03</span> Security Tool Tampering</a></li><li><a class="" href="../../p/con/mc-con-04.html"><span class="tid">CON-04</span> Masquerading &amp; Impersonation</a></li><li><a class="" href="../../p/con/mc-con-05.html"><span class="tid">CON-05</span> Environment &amp; Sandbox Evasion</a></li><li><a class="" href="../../p/con/mc-con-06.html"><span class="tid">CON-06</span> Process Injection</a></li><li><a class="" href="../../p/con/mc-con-07.html"><span class="tid">CON-07</span> Polymorphism &amp; Metamorphism</a></li><li><a class="" href="../../p/con/mc-con-08.html"><span class="tid">CON-08</span> Log &amp; Artifact Manipulation</a></li><li><a class="" href="../../p/con/mc-con-09.html"><span class="tid">CON-09</span> Living-off-the-Land for Evasion</a></li><li><a class="" href="../../p/con/mc-con-10.html"><span class="tid">CON-10</span> Anti-Forensics &amp; Cleanup</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg><span>Expansion</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/exp/index.html"><span class="tid">EXP</span> Phase overview</a></li>
+    <li><a class="" href="../../p/exp/mc-exp-01.html"><span class="tid">EXP-01</span> Living-off-the-Land Lateral Movement</a></li><li><a class="" href="../../p/exp/mc-exp-02.html"><span class="tid">EXP-02</span> Credential Reuse &amp; Relay</a></li><li><a class="" href="../../p/exp/mc-exp-03.html"><span class="tid">EXP-03</span> Pass-the-Hash / Pass-the-Ticket</a></li><li><a class="" href="../../p/exp/mc-exp-04.html"><span class="tid">EXP-04</span> Remote Service &amp; Protocol Abuse</a></li><li><a class="" href="../../p/exp/mc-exp-05.html"><span class="tid">EXP-05</span> Network Share Propagation</a></li><li><a class="" href="../../p/exp/mc-exp-06.html"><span class="tid">EXP-06</span> Worm-like Self-Propagation</a></li><li><a class="" href="../../p/exp/mc-exp-07.html"><span class="tid">EXP-07</span> Privilege Escalation Across Hosts</a></li><li><a class="" href="../../p/exp/mc-exp-08.html"><span class="tid">EXP-08</span> Identity &amp; Trust Relationship Abuse</a></li><li><a class="" href="../../p/exp/mc-exp-09.html"><span class="tid">EXP-09</span> Directory Services Targeting</a></li><li><a class="" href="../../p/exp/mc-exp-10.html"><span class="tid">EXP-10</span> Cloud &amp; Hybrid Lateral Movement</a></li>
+  </ul>
+</div>
+<div class="nav-sec open">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>Extraction</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="../../p/ext/index.html"><span class="tid">EXT</span> Phase overview</a></li>
+    <li><a class="" href="../../p/ext/mc-ext-01.html"><span class="tid">EXT-01</span> HTTP / HTTPS Data Exfiltration</a></li><li><a class="" href="../../p/ext/mc-ext-02.html"><span class="tid">EXT-02</span> DNS Tunneling</a></li><li><a class="" href="../../p/ext/mc-ext-03.html"><span class="tid">EXT-03</span> Cloud Storage Abuse</a></li><li><a class="" href="../../p/ext/mc-ext-04.html"><span class="tid">EXT-04</span> Messaging and Social Platform Channels</a></li><li><a class="active" href="../../p/ext/mc-ext-05.html"><span class="tid">EXT-05</span> FTP / SFTP / FTPS Transfer</a></li><li><a class="" href="../../p/ext/mc-ext-06.html"><span class="tid">EXT-06</span> Tor / Proxy / VPN Anonymization Channels</a></li><li><a class="" href="../../p/ext/mc-ext-07.html"><span class="tid">EXT-07</span> Encrypted Command-and-Control Channels</a></li><li><a class="" href="../../p/ext/mc-ext-08.html"><span class="tid">EXT-08</span> Removable Media Data Extraction</a></li><li><a class="" href="../../p/ext/mc-ext-09.html"><span class="tid">EXT-09</span> Steganographic Data Transfer</a></li><li><a class="" href="../../p/ext/mc-ext-10.html"><span class="tid">EXT-10</span> Multi-Channel Redundant Exfiltration</a></li>
+  </ul>
+</div>
+<div class="nav-h">Resources</div>
+<a class="nav-single " href="../../detections.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>Detection Library</a>
+<a class="nav-single " href="../../mappings.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Mappings</a>
+<a class="nav-single " href="../../ioc.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>IOC Lookup</a>
+<a class="nav-single " href="../../linking.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Chain Linking</a>
+<a class="nav-single " href="../../linkage.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>Linkage Map</a>
+<a class="nav-single " href="../../about.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>About</a></aside>
+  <div class="scrim"></div>
+  <main class="content"><div class="page"><nav class="crumb"><a href="../../index.html">Home</a><span class="sep">/</span>
+      <a href="../../p/ext/index.html">Extraction</a><span class="sep">/</span><span>EXT-05</span></nav><div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px">
+      <span class="pill red">EXT-05</span>
+      <span class="pill ghost"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Extraction · Exfiltration & C2</span>
+      <span class="pill ghost"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>KQL</span>
+      <span class="pill ghost" style="opacity:.55"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>No YARA</span>
+    </div><h1>FTP / SFTP / FTPS Transfer</h1>
+    <p style="color:var(--muted);font-size:1.02rem;max-width:64ch">FTP / SFTP / FTPS Transfer refers to the use of file transfer protocols to move attacker-controlled data between a target environment and external systems..</p>
+    <section class="sec map"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><h2>Mappings</h2></div><div class="map-row"><span class="map-k"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>MITRE ATT&amp;CK</span><div class="map-vals"><a class="map-chip att" href="https://attack.mitre.org/techniques/T1048/" target="_blank" rel="noopener" title="Exfiltration Over Alternative Protocol"><b>T1048</b> Exfiltration Over Alternative Protocol</a><a class="map-chip att" href="https://attack.mitre.org/techniques/T1048/003/" target="_blank" rel="noopener" title="Exfiltration Over Unencrypted Non-C2 Protocol"><b>T1048.003</b> Exfiltration Over Unencrypted Non-C2 Protocol</a></div></div><div class="map-row"><span class="map-k"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>CVE examples</span><div class="map-vals"><span class="map-na">Not vulnerability-based — this capability is behavioural.</span></div></div><div class="map-row"><span class="map-k"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>MalwareBazaar</span><div class="map-vals"><a class="map-chip mwb" href="https://bazaar.abuse.ch/browse/signature/SnakeKeylogger/" target="_blank" rel="noopener" title="Browse on MalwareBazaar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Snake Keylogger</a><a class="map-chip mwb" href="https://bazaar.abuse.ch/browse/signature/AgentTesla/" target="_blank" rel="noopener" title="Browse on MalwareBazaar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>AgentTesla</a><div class="mwb-live" data-seeds='[{"type":"signature","value":"Snake Keylogger"},{"type":"signature","value":"AgentTesla"}]'></div></div></div></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><h2>Summary</h2></div><p>FTP / SFTP / FTPS Transfer refers to the use of file transfer protocols to move attacker-controlled data between a target environment and external systems. This includes uploading files to remote servers, downloading tools from external sources, or synchronizing data through automated transfer mechanisms. Within MalChain, this capability begins once data is transmitted through file transfer services outside the organizational boundary. Attackers exploit implicit trust in established file transfer infrastructure and routine data exchange workflows to move information while appearing consistent with legitimate operations. Routine reliance on automated file transfer processes and scheduled data synchronization often allows unauthorized transfers to occur without immediate detection. Trust abuse may involve connecting to unauthorized file transfer servers, using embedded credentials, or automating transfers presented as routine operational activity. Common transfer methods include:</p>
+<ul>
+<li>Uploading files to external FTP or SFTP servers  </li>
+<li>Downloading tools or scripts from remote file repositories  </li>
+<li>Automating file synchronization between systems  </li>
+<li>Transferring data through scheduled file transfer jobs  </li>
+<li>Using encrypted file transfer channels to conceal data movement  </li>
+</ul>
+<p>Real world usage includes:</p>
+<ul>
+<li>Data exfiltration campaigns transferring sensitive files to remote servers  </li>
+<li>Ransomware operators staging payloads through file transfer infrastructure  </li>
+<li>Insider threat scenarios involving unauthorized data uploads  </li>
+<li>Persistent threats maintaining remote storage of stolen information</li>
+</ul></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><h2>Detection Guidance</h2></div><p>Detection relies on monitoring file transfer activity, connection behavior, and data movement patterns associated with file transfer protocols. Contextual correlation between file access and network activity is essential to reduce false positives.</p>
+<ul>
+<li>Monitor connections to external file transfer servers  </li>
+<li>Detect large or unusual file upload or download activity  </li>
+<li>Correlate file transfer events with sensitive data access  </li>
+<li>Alert on automated transfer jobs outside approved schedules  </li>
+<li>Identify rare or unauthorized file transfer connections</li>
+</ul></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span><h2>KQL Detection Concepts</h2></div><ul>
+<li>Network events indicating connections to FTP or SFTP servers  </li>
+<li>File transfer activity associated with external destinations  </li>
+<li>Authentication events involving file transfer accounts</li>
+</ul></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span><h2>YARA Detection Concepts</h2></div><ul>
+<li>Scripts or binaries implementing automated file transfer routines  </li>
+<li>Code patterns associated with FTP or SFTP communication  </li>
+<li>Executable components transferring files to remote servers</li>
+</ul></section>
+<section class="sec rule"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span><h2>KQL Detection Rule</h2></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// FTP/SFTP/FTPS Transfer: command-line FTP clients to external hosts
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;ftp.exe&quot;,&quot;winscp.com&quot;,&quot;winscp.exe&quot;,&quot;pscp.exe&quot;,&quot;psftp.exe&quot;,&quot;curl.exe&quot;) and ProcessCommandLine has_any (&quot;ftp://&quot;,&quot;sftp://&quot;,&quot;ftps://&quot;,&quot;-put&quot;,&quot;put &quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div></section>
+<section class="sec rule"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h2>YARA Detection Rule</h2></div><div class="na-note"><em>YARA is not meaningfully applicable to this primarily behavioral / network-telemetry capability. Rely on the KQL rule above plus network and identity detections.</em></div></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span><h2>Mitigation</h2></div><ul>
+<li>Restrict access to external file transfer services  </li>
+<li>Monitor file transfer activity and enforce transfer policies  </li>
+<li>Implement data loss prevention controls for outbound transfers  </li>
+<li>Enforce strong authentication for file transfer accounts</li>
+</ul></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><h2>Incident Response</h2></div><ul>
+<li>Identify systems involved in unauthorized file transfer activity  </li>
+<li>Block connections to suspicious file transfer servers  </li>
+<li>Analyze transferred files and associated system behavior  </li>
+<li>Review transfer logs and communication timelines</li>
+</ul></section>
+<section class="sec"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span><h2>Chain Linking</h2></div><ul>
+<li><a href="../../p/ext/mc-ext-06.html">Tor / Proxy / VPN Anonymization Channels</a></li>
+<li><a href="../../p/ext/mc-ext-07.html">Encrypted Command-and-Control Channels</a></li>
+<li><a href="../../p/ext/mc-ext-10.html">Multi-Channel Redundant Exfiltration</a></li>
+</ul></section>
+    <div class="pager"><a class="prev" href="../../p/ext/mc-ext-04.html"><div class="d">← Previous</div><div class="t">Messaging and Social Platform Channels</div></a><a class="next" href="../../p/ext/mc-ext-06.html"><div class="d">Next →</div><div class="t">Tor / Proxy / VPN Anonymization Channels</div></a></div></div></main>
+</div>
+<footer class="footer"><span>Mal<b>Chain</b> — behaviour-centric malware kill-chain framework</span><span>·</span><span>52 techniques · 52 KQL · 30 YARA</span><span>·</span><a href="https://malwarehunts.com" target="_blank" rel="noopener">malwarehunts.com</a></footer>
+<script src="../../assets/app.js?v=1783878887"></script>
+</body>
+</html>

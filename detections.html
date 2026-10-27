@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detection Library · MalChain</title>
+<meta name="description" content="KQL and YARA detections for every MalChain technique, with copy buttons.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css?v=1783878887">
+<script>window.SITE_ROOT="";</script>
+<script src="assets/ioc-config.js?v=1783878887"></script>
+<link rel="canonical" href="https://malchain.in/detections.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MalChain">
+<meta property="og:title" content="Detection Library · MalChain">
+<meta property="og:description" content="KQL and YARA detections for every MalChain technique, with copy buttons.">
+<meta property="og:url" content="https://malchain.in/detections.html">
+<meta property="og:image" content="https://malchain.in/assets/cover.png">
+<meta property="og:image:alt" content="MalChain — malware kill-chain framework">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Detection Library · MalChain">
+<meta name="twitter:description" content="KQL and YARA detections for every MalChain technique, with copy buttons.">
+<meta name="twitter:image" content="https://malchain.in/assets/cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Detection Library \u00b7 MalChain","headline":"Detection Library \u00b7 MalChain","description":"KQL and YARA detections for every MalChain technique, with copy buttons.","url":"https://malchain.in/detections.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"MalChain","url":"https://malchain.in/"},"publisher":{"@type":"Organization","name":"Malwarehunts","url":"https://malwarehunts.com"}}</script>
+</head>
+<body>
+<header class="topbar">
+  <button class="hamb" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <a class="brand" href="index.html"><span class="mark"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="wm">Mal<b>Chain</b></span></a>
+  <span class="spacer"></span>
+  <a class="tlink" href="detections.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><span>Detections</span></a>
+  <a class="tlink" href="https://github.com/Malwarehunts/Malchain" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+</header>
+<div class="shell">
+  <aside class="sidebar"><a class="nav-single " href="index.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Home</a>
+<a class="nav-single " href="overview.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Framework Overview</a>
+<div class="nav-h">Phases</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg><span>Ingress</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="p/ing/index.html"><span class="tid">ING</span> Phase overview</a></li>
+    <li><a class="" href="p/ing/mc-ing-01.html"><span class="tid">ING-01</span> Removable Media &amp; File Transfer</a></li><li><a class="" href="p/ing/mc-ing-02.html"><span class="tid">ING-02</span> Malvertising &amp; Drive-By Downloads</a></li><li><a class="" href="p/ing/mc-ing-03.html"><span class="tid">ING-03</span> Supply Chain Compromise</a></li><li><a class="" href="p/ing/mc-ing-04.html"><span class="tid">ING-04</span> Credential Abuse</a></li><li><a class="" href="p/ing/mc-ing-05.html"><span class="tid">ING-05</span> Malicious or Compromised USB Devices</a></li><li><a class="" href="p/ing/mc-ing-06.html"><span class="tid">ING-06</span> Watering Hole Attacks</a></li><li><a class="" href="p/ing/mc-ing-07.html"><span class="tid">ING-07</span> External Remote Services</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Activation</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="p/act/index.html"><span class="tid">ACT</span> Phase overview</a></li>
+    <li><a class="" href="p/act/mc-act-01.html"><span class="tid">ACT-01</span> User-Executed Files</a></li><li><a class="" href="p/act/mc-act-02.html"><span class="tid">ACT-02</span> Script-Based Execution</a></li><li><a class="" href="p/act/mc-act-03.html"><span class="tid">ACT-03</span> Service-Based Execution</a></li><li><a class="" href="p/act/mc-act-04.html"><span class="tid">ACT-04</span> DLL Side-Loading or Hijacking</a></li><li><a class="" href="p/act/mc-act-05.html"><span class="tid">ACT-05</span> WMI-Based Execution</a></li><li><a class="" href="p/act/mc-act-06.html"><span class="tid">ACT-06</span> Browser Extension Execution</a></li><li><a class="" href="p/act/mc-act-07.html"><span class="tid">ACT-07</span> Boot / Firmware Execution</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg><span>Anchoring</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="p/anc/index.html"><span class="tid">ANC</span> Phase overview</a></li>
+    <li><a class="" href="p/anc/mc-anc-01.html"><span class="tid">ANC-01</span> Startup &amp; Logon Execution</a></li><li><a class="" href="p/anc/mc-anc-02.html"><span class="tid">ANC-02</span> Scheduled &amp; Triggered Execution</a></li><li><a class="" href="p/anc/mc-anc-03.html"><span class="tid">ANC-03</span> Service &amp; Daemon Persistence</a></li><li><a class="" href="p/anc/mc-anc-04.html"><span class="tid">ANC-04</span> Registry-Based Persistence</a></li><li><a class="" href="p/anc/mc-anc-05.html"><span class="tid">ANC-05</span> Browser-Based Persistence</a></li><li><a class="" href="p/anc/mc-anc-06.html"><span class="tid">ANC-06</span> WMI &amp; Event Subscription Persistence</a></li><li><a class="" href="p/anc/mc-anc-07.html"><span class="tid">ANC-07</span> Fileless &amp; In-Memory Persistence</a></li><li><a class="" href="p/anc/mc-anc-08.html"><span class="tid">ANC-08</span> Boot &amp; Pre-OS Persistence</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span>Concealment</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="p/con/index.html"><span class="tid">CON</span> Phase overview</a></li>
+    <li><a class="" href="p/con/mc-con-01.html"><span class="tid">CON-01</span> Obfuscation &amp; Packing</a></li><li><a class="" href="p/con/mc-con-02.html"><span class="tid">CON-02</span> Fileless Malware Execution</a></li><li><a class="" href="p/con/mc-con-03.html"><span class="tid">CON-03</span> Security Tool Tampering</a></li><li><a class="" href="p/con/mc-con-04.html"><span class="tid">CON-04</span> Masquerading &amp; Impersonation</a></li><li><a class="" href="p/con/mc-con-05.html"><span class="tid">CON-05</span> Environment &amp; Sandbox Evasion</a></li><li><a class="" href="p/con/mc-con-06.html"><span class="tid">CON-06</span> Process Injection</a></li><li><a class="" href="p/con/mc-con-07.html"><span class="tid">CON-07</span> Polymorphism &amp; Metamorphism</a></li><li><a class="" href="p/con/mc-con-08.html"><span class="tid">CON-08</span> Log &amp; Artifact Manipulation</a></li><li><a class="" href="p/con/mc-con-09.html"><span class="tid">CON-09</span> Living-off-the-Land for Evasion</a></li><li><a class="" href="p/con/mc-con-10.html"><span class="tid">CON-10</span> Anti-Forensics &amp; Cleanup</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg><span>Expansion</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="p/exp/index.html"><span class="tid">EXP</span> Phase overview</a></li>
+    <li><a class="" href="p/exp/mc-exp-01.html"><span class="tid">EXP-01</span> Living-off-the-Land Lateral Movement</a></li><li><a class="" href="p/exp/mc-exp-02.html"><span class="tid">EXP-02</span> Credential Reuse &amp; Relay</a></li><li><a class="" href="p/exp/mc-exp-03.html"><span class="tid">EXP-03</span> Pass-the-Hash / Pass-the-Ticket</a></li><li><a class="" href="p/exp/mc-exp-04.html"><span class="tid">EXP-04</span> Remote Service &amp; Protocol Abuse</a></li><li><a class="" href="p/exp/mc-exp-05.html"><span class="tid">EXP-05</span> Network Share Propagation</a></li><li><a class="" href="p/exp/mc-exp-06.html"><span class="tid">EXP-06</span> Worm-like Self-Propagation</a></li><li><a class="" href="p/exp/mc-exp-07.html"><span class="tid">EXP-07</span> Privilege Escalation Across Hosts</a></li><li><a class="" href="p/exp/mc-exp-08.html"><span class="tid">EXP-08</span> Identity &amp; Trust Relationship Abuse</a></li><li><a class="" href="p/exp/mc-exp-09.html"><span class="tid">EXP-09</span> Directory Services Targeting</a></li><li><a class="" href="p/exp/mc-exp-10.html"><span class="tid">EXP-10</span> Cloud &amp; Hybrid Lateral Movement</a></li>
+  </ul>
+</div>
+<div class="nav-sec ">
+  <button class="nav-top"><svg class="ic pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span>Extraction</span><svg class="ic chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <ul class="nav-list">
+    <li><a class="" href="p/ext/index.html"><span class="tid">EXT</span> Phase overview</a></li>
+    <li><a class="" href="p/ext/mc-ext-01.html"><span class="tid">EXT-01</span> HTTP / HTTPS Data Exfiltration</a></li><li><a class="" href="p/ext/mc-ext-02.html"><span class="tid">EXT-02</span> DNS Tunneling</a></li><li><a class="" href="p/ext/mc-ext-03.html"><span class="tid">EXT-03</span> Cloud Storage Abuse</a></li><li><a class="" href="p/ext/mc-ext-04.html"><span class="tid">EXT-04</span> Messaging and Social Platform Channels</a></li><li><a class="" href="p/ext/mc-ext-05.html"><span class="tid">EXT-05</span> FTP / SFTP / FTPS Transfer</a></li><li><a class="" href="p/ext/mc-ext-06.html"><span class="tid">EXT-06</span> Tor / Proxy / VPN Anonymization Channels</a></li><li><a class="" href="p/ext/mc-ext-07.html"><span class="tid">EXT-07</span> Encrypted Command-and-Control Channels</a></li><li><a class="" href="p/ext/mc-ext-08.html"><span class="tid">EXT-08</span> Removable Media Data Extraction</a></li><li><a class="" href="p/ext/mc-ext-09.html"><span class="tid">EXT-09</span> Steganographic Data Transfer</a></li><li><a class="" href="p/ext/mc-ext-10.html"><span class="tid">EXT-10</span> Multi-Channel Redundant Exfiltration</a></li>
+  </ul>
+</div>
+<div class="nav-h">Resources</div>
+<a class="nav-single active" href="detections.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>Detection Library</a>
+<a class="nav-single " href="mappings.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Mappings</a>
+<a class="nav-single " href="ioc.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>IOC Lookup</a>
+<a class="nav-single " href="linking.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Chain Linking</a>
+<a class="nav-single " href="linkage.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>Linkage Map</a>
+<a class="nav-single " href="about.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>About</a></aside>
+  <div class="scrim"></div>
+  <main class="content"><div class="page"><nav class="crumb"><a href="index.html">Home</a><span class="sep">/</span><span>Detection Library</span></nav><h1>Detection Library</h1><p style="color:var(--muted);font-size:1.02rem;max-width:66ch">Every technique ships with a runnable Microsoft Defender / Sentinel KQL query; 30 techniques with file or memory artifacts also ship a validated YARA rule. Choose a phase to view its rules, or jump straight from the coverage matrix.</p><div class="grid three" style="margin:18px 0 6px"><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span><h3>52 KQL queries</h3><p>Advanced Hunting across DeviceProcess, File, Registry, Network, Logon &amp; Identity tables.</p></div><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3>30 YARA rules</h3><p>All compile cleanly; behavioural/network-only techniques are KQL-only by design.</p></div><div class="card"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><h3>1:1 mapping</h3><p>Every rule ties to a single MalChain technique ID. Click a row to open it.</p></div></div><h2>Coverage matrix</h2><p style="color:var(--muted)">Every technique has a KQL query; 30 also have a YARA rule. Select any row to open its rule below.</p><div class="tablewrap"><table><thead><tr><th>Technique</th><th>Name</th><th>KQL</th><th>YARA</th></tr></thead><tbody><tr><td><a data-goto="mc-ing-01" data-phase="ing" href="#mc-ing-01"><code>ING-01</code></a></td><td><a data-goto="mc-ing-01" data-phase="ing" href="#mc-ing-01" style="color:var(--ink)">Removable Media &amp; File Transfer</a></td><td><a class="yes" data-goto="mc-ing-01" data-phase="ing" href="#mc-ing-01">KQL</a></td><td><a class="yes" data-goto="mc-ing-01" data-phase="ing" href="#mc-ing-01">YARA</a></td></tr><tr><td><a data-goto="mc-ing-02" data-phase="ing" href="#mc-ing-02"><code>ING-02</code></a></td><td><a data-goto="mc-ing-02" data-phase="ing" href="#mc-ing-02" style="color:var(--ink)">Malvertising &amp; Drive-By Downloads</a></td><td><a class="yes" data-goto="mc-ing-02" data-phase="ing" href="#mc-ing-02">KQL</a></td><td><a class="yes" data-goto="mc-ing-02" data-phase="ing" href="#mc-ing-02">YARA</a></td></tr><tr><td><a data-goto="mc-ing-03" data-phase="ing" href="#mc-ing-03"><code>ING-03</code></a></td><td><a data-goto="mc-ing-03" data-phase="ing" href="#mc-ing-03" style="color:var(--ink)">Supply Chain Compromise</a></td><td><a class="yes" data-goto="mc-ing-03" data-phase="ing" href="#mc-ing-03">KQL</a></td><td><a class="yes" data-goto="mc-ing-03" data-phase="ing" href="#mc-ing-03">YARA</a></td></tr><tr><td><a data-goto="mc-ing-04" data-phase="ing" href="#mc-ing-04"><code>ING-04</code></a></td><td><a data-goto="mc-ing-04" data-phase="ing" href="#mc-ing-04" style="color:var(--ink)">Credential Abuse</a></td><td><a class="yes" data-goto="mc-ing-04" data-phase="ing" href="#mc-ing-04">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-ing-05" data-phase="ing" href="#mc-ing-05"><code>ING-05</code></a></td><td><a data-goto="mc-ing-05" data-phase="ing" href="#mc-ing-05" style="color:var(--ink)">Malicious or Compromised USB Devices</a></td><td><a class="yes" data-goto="mc-ing-05" data-phase="ing" href="#mc-ing-05">KQL</a></td><td><a class="yes" data-goto="mc-ing-05" data-phase="ing" href="#mc-ing-05">YARA</a></td></tr><tr><td><a data-goto="mc-ing-06" data-phase="ing" href="#mc-ing-06"><code>ING-06</code></a></td><td><a data-goto="mc-ing-06" data-phase="ing" href="#mc-ing-06" style="color:var(--ink)">Watering Hole Attacks</a></td><td><a class="yes" data-goto="mc-ing-06" data-phase="ing" href="#mc-ing-06">KQL</a></td><td><a class="yes" data-goto="mc-ing-06" data-phase="ing" href="#mc-ing-06">YARA</a></td></tr><tr><td><a data-goto="mc-ing-07" data-phase="ing" href="#mc-ing-07"><code>ING-07</code></a></td><td><a data-goto="mc-ing-07" data-phase="ing" href="#mc-ing-07" style="color:var(--ink)">External Remote Services</a></td><td><a class="yes" data-goto="mc-ing-07" data-phase="ing" href="#mc-ing-07">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-act-01" data-phase="act" href="#mc-act-01"><code>ACT-01</code></a></td><td><a data-goto="mc-act-01" data-phase="act" href="#mc-act-01" style="color:var(--ink)">User-Executed Files</a></td><td><a class="yes" data-goto="mc-act-01" data-phase="act" href="#mc-act-01">KQL</a></td><td><a class="yes" data-goto="mc-act-01" data-phase="act" href="#mc-act-01">YARA</a></td></tr><tr><td><a data-goto="mc-act-02" data-phase="act" href="#mc-act-02"><code>ACT-02</code></a></td><td><a data-goto="mc-act-02" data-phase="act" href="#mc-act-02" style="color:var(--ink)">Script-Based Execution</a></td><td><a class="yes" data-goto="mc-act-02" data-phase="act" href="#mc-act-02">KQL</a></td><td><a class="yes" data-goto="mc-act-02" data-phase="act" href="#mc-act-02">YARA</a></td></tr><tr><td><a data-goto="mc-act-03" data-phase="act" href="#mc-act-03"><code>ACT-03</code></a></td><td><a data-goto="mc-act-03" data-phase="act" href="#mc-act-03" style="color:var(--ink)">Service-Based Execution</a></td><td><a class="yes" data-goto="mc-act-03" data-phase="act" href="#mc-act-03">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-act-04" data-phase="act" href="#mc-act-04"><code>ACT-04</code></a></td><td><a data-goto="mc-act-04" data-phase="act" href="#mc-act-04" style="color:var(--ink)">DLL Side-Loading or Hijacking</a></td><td><a class="yes" data-goto="mc-act-04" data-phase="act" href="#mc-act-04">KQL</a></td><td><a class="yes" data-goto="mc-act-04" data-phase="act" href="#mc-act-04">YARA</a></td></tr><tr><td><a data-goto="mc-act-05" data-phase="act" href="#mc-act-05"><code>ACT-05</code></a></td><td><a data-goto="mc-act-05" data-phase="act" href="#mc-act-05" style="color:var(--ink)">WMI-Based Execution</a></td><td><a class="yes" data-goto="mc-act-05" data-phase="act" href="#mc-act-05">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-act-06" data-phase="act" href="#mc-act-06"><code>ACT-06</code></a></td><td><a data-goto="mc-act-06" data-phase="act" href="#mc-act-06" style="color:var(--ink)">Browser Extension Execution</a></td><td><a class="yes" data-goto="mc-act-06" data-phase="act" href="#mc-act-06">KQL</a></td><td><a class="yes" data-goto="mc-act-06" data-phase="act" href="#mc-act-06">YARA</a></td></tr><tr><td><a data-goto="mc-act-07" data-phase="act" href="#mc-act-07"><code>ACT-07</code></a></td><td><a data-goto="mc-act-07" data-phase="act" href="#mc-act-07" style="color:var(--ink)">Boot / Firmware Execution</a></td><td><a class="yes" data-goto="mc-act-07" data-phase="act" href="#mc-act-07">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-anc-01" data-phase="anc" href="#mc-anc-01"><code>ANC-01</code></a></td><td><a data-goto="mc-anc-01" data-phase="anc" href="#mc-anc-01" style="color:var(--ink)">Startup &amp; Logon Execution</a></td><td><a class="yes" data-goto="mc-anc-01" data-phase="anc" href="#mc-anc-01">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-anc-02" data-phase="anc" href="#mc-anc-02"><code>ANC-02</code></a></td><td><a data-goto="mc-anc-02" data-phase="anc" href="#mc-anc-02" style="color:var(--ink)">Scheduled &amp; Triggered Execution</a></td><td><a class="yes" data-goto="mc-anc-02" data-phase="anc" href="#mc-anc-02">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-anc-03" data-phase="anc" href="#mc-anc-03"><code>ANC-03</code></a></td><td><a data-goto="mc-anc-03" data-phase="anc" href="#mc-anc-03" style="color:var(--ink)">Service &amp; Daemon Persistence</a></td><td><a class="yes" data-goto="mc-anc-03" data-phase="anc" href="#mc-anc-03">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-anc-04" data-phase="anc" href="#mc-anc-04"><code>ANC-04</code></a></td><td><a data-goto="mc-anc-04" data-phase="anc" href="#mc-anc-04" style="color:var(--ink)">Registry-Based Persistence</a></td><td><a class="yes" data-goto="mc-anc-04" data-phase="anc" href="#mc-anc-04">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-anc-05" data-phase="anc" href="#mc-anc-05"><code>ANC-05</code></a></td><td><a data-goto="mc-anc-05" data-phase="anc" href="#mc-anc-05" style="color:var(--ink)">Browser-Based Persistence</a></td><td><a class="yes" data-goto="mc-anc-05" data-phase="anc" href="#mc-anc-05">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-anc-06" data-phase="anc" href="#mc-anc-06"><code>ANC-06</code></a></td><td><a data-goto="mc-anc-06" data-phase="anc" href="#mc-anc-06" style="color:var(--ink)">WMI &amp; Event Subscription Persistence</a></td><td><a class="yes" data-goto="mc-anc-06" data-phase="anc" href="#mc-anc-06">KQL</a></td><td><a class="yes" data-goto="mc-anc-06" data-phase="anc" href="#mc-anc-06">YARA</a></td></tr><tr><td><a data-goto="mc-anc-07" data-phase="anc" href="#mc-anc-07"><code>ANC-07</code></a></td><td><a data-goto="mc-anc-07" data-phase="anc" href="#mc-anc-07" style="color:var(--ink)">Fileless &amp; In-Memory Persistence</a></td><td><a class="yes" data-goto="mc-anc-07" data-phase="anc" href="#mc-anc-07">KQL</a></td><td><a class="yes" data-goto="mc-anc-07" data-phase="anc" href="#mc-anc-07">YARA</a></td></tr><tr><td><a data-goto="mc-anc-08" data-phase="anc" href="#mc-anc-08"><code>ANC-08</code></a></td><td><a data-goto="mc-anc-08" data-phase="anc" href="#mc-anc-08" style="color:var(--ink)">Boot &amp; Pre-OS Persistence</a></td><td><a class="yes" data-goto="mc-anc-08" data-phase="anc" href="#mc-anc-08">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-con-01" data-phase="con" href="#mc-con-01"><code>CON-01</code></a></td><td><a data-goto="mc-con-01" data-phase="con" href="#mc-con-01" style="color:var(--ink)">Obfuscation &amp; Packing</a></td><td><a class="yes" data-goto="mc-con-01" data-phase="con" href="#mc-con-01">KQL</a></td><td><a class="yes" data-goto="mc-con-01" data-phase="con" href="#mc-con-01">YARA</a></td></tr><tr><td><a data-goto="mc-con-02" data-phase="con" href="#mc-con-02"><code>CON-02</code></a></td><td><a data-goto="mc-con-02" data-phase="con" href="#mc-con-02" style="color:var(--ink)">Fileless Malware Execution</a></td><td><a class="yes" data-goto="mc-con-02" data-phase="con" href="#mc-con-02">KQL</a></td><td><a class="yes" data-goto="mc-con-02" data-phase="con" href="#mc-con-02">YARA</a></td></tr><tr><td><a data-goto="mc-con-03" data-phase="con" href="#mc-con-03"><code>CON-03</code></a></td><td><a data-goto="mc-con-03" data-phase="con" href="#mc-con-03" style="color:var(--ink)">Security Tool Tampering</a></td><td><a class="yes" data-goto="mc-con-03" data-phase="con" href="#mc-con-03">KQL</a></td><td><a class="yes" data-goto="mc-con-03" data-phase="con" href="#mc-con-03">YARA</a></td></tr><tr><td><a data-goto="mc-con-04" data-phase="con" href="#mc-con-04"><code>CON-04</code></a></td><td><a data-goto="mc-con-04" data-phase="con" href="#mc-con-04" style="color:var(--ink)">Masquerading &amp; Impersonation</a></td><td><a class="yes" data-goto="mc-con-04" data-phase="con" href="#mc-con-04">KQL</a></td><td><a class="yes" data-goto="mc-con-04" data-phase="con" href="#mc-con-04">YARA</a></td></tr><tr><td><a data-goto="mc-con-05" data-phase="con" href="#mc-con-05"><code>CON-05</code></a></td><td><a data-goto="mc-con-05" data-phase="con" href="#mc-con-05" style="color:var(--ink)">Environment &amp; Sandbox Evasion</a></td><td><a class="yes" data-goto="mc-con-05" data-phase="con" href="#mc-con-05">KQL</a></td><td><a class="yes" data-goto="mc-con-05" data-phase="con" href="#mc-con-05">YARA</a></td></tr><tr><td><a data-goto="mc-con-06" data-phase="con" href="#mc-con-06"><code>CON-06</code></a></td><td><a data-goto="mc-con-06" data-phase="con" href="#mc-con-06" style="color:var(--ink)">Process Injection</a></td><td><a class="yes" data-goto="mc-con-06" data-phase="con" href="#mc-con-06">KQL</a></td><td><a class="yes" data-goto="mc-con-06" data-phase="con" href="#mc-con-06">YARA</a></td></tr><tr><td><a data-goto="mc-con-07" data-phase="con" href="#mc-con-07"><code>CON-07</code></a></td><td><a data-goto="mc-con-07" data-phase="con" href="#mc-con-07" style="color:var(--ink)">Polymorphism &amp; Metamorphism</a></td><td><a class="yes" data-goto="mc-con-07" data-phase="con" href="#mc-con-07">KQL</a></td><td><a class="yes" data-goto="mc-con-07" data-phase="con" href="#mc-con-07">YARA</a></td></tr><tr><td><a data-goto="mc-con-08" data-phase="con" href="#mc-con-08"><code>CON-08</code></a></td><td><a data-goto="mc-con-08" data-phase="con" href="#mc-con-08" style="color:var(--ink)">Log &amp; Artifact Manipulation</a></td><td><a class="yes" data-goto="mc-con-08" data-phase="con" href="#mc-con-08">KQL</a></td><td><a class="yes" data-goto="mc-con-08" data-phase="con" href="#mc-con-08">YARA</a></td></tr><tr><td><a data-goto="mc-con-09" data-phase="con" href="#mc-con-09"><code>CON-09</code></a></td><td><a data-goto="mc-con-09" data-phase="con" href="#mc-con-09" style="color:var(--ink)">Living-off-the-Land for Evasion</a></td><td><a class="yes" data-goto="mc-con-09" data-phase="con" href="#mc-con-09">KQL</a></td><td><a class="yes" data-goto="mc-con-09" data-phase="con" href="#mc-con-09">YARA</a></td></tr><tr><td><a data-goto="mc-con-10" data-phase="con" href="#mc-con-10"><code>CON-10</code></a></td><td><a data-goto="mc-con-10" data-phase="con" href="#mc-con-10" style="color:var(--ink)">Anti-Forensics &amp; Cleanup</a></td><td><a class="yes" data-goto="mc-con-10" data-phase="con" href="#mc-con-10">KQL</a></td><td><a class="yes" data-goto="mc-con-10" data-phase="con" href="#mc-con-10">YARA</a></td></tr><tr><td><a data-goto="mc-exp-01" data-phase="exp" href="#mc-exp-01"><code>EXP-01</code></a></td><td><a data-goto="mc-exp-01" data-phase="exp" href="#mc-exp-01" style="color:var(--ink)">Living-off-the-Land Lateral Movement</a></td><td><a class="yes" data-goto="mc-exp-01" data-phase="exp" href="#mc-exp-01">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-exp-02" data-phase="exp" href="#mc-exp-02"><code>EXP-02</code></a></td><td><a data-goto="mc-exp-02" data-phase="exp" href="#mc-exp-02" style="color:var(--ink)">Credential Reuse &amp; Relay</a></td><td><a class="yes" data-goto="mc-exp-02" data-phase="exp" href="#mc-exp-02">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-exp-03" data-phase="exp" href="#mc-exp-03"><code>EXP-03</code></a></td><td><a data-goto="mc-exp-03" data-phase="exp" href="#mc-exp-03" style="color:var(--ink)">Pass-the-Hash / Pass-the-Ticket</a></td><td><a class="yes" data-goto="mc-exp-03" data-phase="exp" href="#mc-exp-03">KQL</a></td><td><a class="yes" data-goto="mc-exp-03" data-phase="exp" href="#mc-exp-03">YARA</a></td></tr><tr><td><a data-goto="mc-exp-04" data-phase="exp" href="#mc-exp-04"><code>EXP-04</code></a></td><td><a data-goto="mc-exp-04" data-phase="exp" href="#mc-exp-04" style="color:var(--ink)">Remote Service &amp; Protocol Abuse</a></td><td><a class="yes" data-goto="mc-exp-04" data-phase="exp" href="#mc-exp-04">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-exp-05" data-phase="exp" href="#mc-exp-05"><code>EXP-05</code></a></td><td><a data-goto="mc-exp-05" data-phase="exp" href="#mc-exp-05" style="color:var(--ink)">Network Share Propagation</a></td><td><a class="yes" data-goto="mc-exp-05" data-phase="exp" href="#mc-exp-05">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-exp-06" data-phase="exp" href="#mc-exp-06"><code>EXP-06</code></a></td><td><a data-goto="mc-exp-06" data-phase="exp" href="#mc-exp-06" style="color:var(--ink)">Worm-like Self-Propagation</a></td><td><a class="yes" data-goto="mc-exp-06" data-phase="exp" href="#mc-exp-06">KQL</a></td><td><a class="yes" data-goto="mc-exp-06" data-phase="exp" href="#mc-exp-06">YARA</a></td></tr><tr><td><a data-goto="mc-exp-07" data-phase="exp" href="#mc-exp-07"><code>EXP-07</code></a></td><td><a data-goto="mc-exp-07" data-phase="exp" href="#mc-exp-07" style="color:var(--ink)">Privilege Escalation Across Hosts</a></td><td><a class="yes" data-goto="mc-exp-07" data-phase="exp" href="#mc-exp-07">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-exp-08" data-phase="exp" href="#mc-exp-08"><code>EXP-08</code></a></td><td><a data-goto="mc-exp-08" data-phase="exp" href="#mc-exp-08" style="color:var(--ink)">Identity &amp; Trust Relationship Abuse</a></td><td><a class="yes" data-goto="mc-exp-08" data-phase="exp" href="#mc-exp-08">KQL</a></td><td><a class="yes" data-goto="mc-exp-08" data-phase="exp" href="#mc-exp-08">YARA</a></td></tr><tr><td><a data-goto="mc-exp-09" data-phase="exp" href="#mc-exp-09"><code>EXP-09</code></a></td><td><a data-goto="mc-exp-09" data-phase="exp" href="#mc-exp-09" style="color:var(--ink)">Directory Services Targeting</a></td><td><a class="yes" data-goto="mc-exp-09" data-phase="exp" href="#mc-exp-09">KQL</a></td><td><a class="yes" data-goto="mc-exp-09" data-phase="exp" href="#mc-exp-09">YARA</a></td></tr><tr><td><a data-goto="mc-exp-10" data-phase="exp" href="#mc-exp-10"><code>EXP-10</code></a></td><td><a data-goto="mc-exp-10" data-phase="exp" href="#mc-exp-10" style="color:var(--ink)">Cloud &amp; Hybrid Lateral Movement</a></td><td><a class="yes" data-goto="mc-exp-10" data-phase="exp" href="#mc-exp-10">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-ext-01" data-phase="ext" href="#mc-ext-01"><code>EXT-01</code></a></td><td><a data-goto="mc-ext-01" data-phase="ext" href="#mc-ext-01" style="color:var(--ink)">HTTP / HTTPS Data Exfiltration</a></td><td><a class="yes" data-goto="mc-ext-01" data-phase="ext" href="#mc-ext-01">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-ext-02" data-phase="ext" href="#mc-ext-02"><code>EXT-02</code></a></td><td><a data-goto="mc-ext-02" data-phase="ext" href="#mc-ext-02" style="color:var(--ink)">DNS Tunneling</a></td><td><a class="yes" data-goto="mc-ext-02" data-phase="ext" href="#mc-ext-02">KQL</a></td><td><a class="yes" data-goto="mc-ext-02" data-phase="ext" href="#mc-ext-02">YARA</a></td></tr><tr><td><a data-goto="mc-ext-03" data-phase="ext" href="#mc-ext-03"><code>EXT-03</code></a></td><td><a data-goto="mc-ext-03" data-phase="ext" href="#mc-ext-03" style="color:var(--ink)">Cloud Storage Abuse</a></td><td><a class="yes" data-goto="mc-ext-03" data-phase="ext" href="#mc-ext-03">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-ext-04" data-phase="ext" href="#mc-ext-04"><code>EXT-04</code></a></td><td><a data-goto="mc-ext-04" data-phase="ext" href="#mc-ext-04" style="color:var(--ink)">Messaging and Social Platform Channels</a></td><td><a class="yes" data-goto="mc-ext-04" data-phase="ext" href="#mc-ext-04">KQL</a></td><td><a class="yes" data-goto="mc-ext-04" data-phase="ext" href="#mc-ext-04">YARA</a></td></tr><tr><td><a data-goto="mc-ext-05" data-phase="ext" href="#mc-ext-05"><code>EXT-05</code></a></td><td><a data-goto="mc-ext-05" data-phase="ext" href="#mc-ext-05" style="color:var(--ink)">FTP / SFTP / FTPS Transfer</a></td><td><a class="yes" data-goto="mc-ext-05" data-phase="ext" href="#mc-ext-05">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-ext-06" data-phase="ext" href="#mc-ext-06"><code>EXT-06</code></a></td><td><a data-goto="mc-ext-06" data-phase="ext" href="#mc-ext-06" style="color:var(--ink)">Tor / Proxy / VPN Anonymization Channels</a></td><td><a class="yes" data-goto="mc-ext-06" data-phase="ext" href="#mc-ext-06">KQL</a></td><td><a class="yes" data-goto="mc-ext-06" data-phase="ext" href="#mc-ext-06">YARA</a></td></tr><tr><td><a data-goto="mc-ext-07" data-phase="ext" href="#mc-ext-07"><code>EXT-07</code></a></td><td><a data-goto="mc-ext-07" data-phase="ext" href="#mc-ext-07" style="color:var(--ink)">Encrypted Command-and-Control Channels</a></td><td><a class="yes" data-goto="mc-ext-07" data-phase="ext" href="#mc-ext-07">KQL</a></td><td><a class="yes" data-goto="mc-ext-07" data-phase="ext" href="#mc-ext-07">YARA</a></td></tr><tr><td><a data-goto="mc-ext-08" data-phase="ext" href="#mc-ext-08"><code>EXT-08</code></a></td><td><a data-goto="mc-ext-08" data-phase="ext" href="#mc-ext-08" style="color:var(--ink)">Removable Media Data Extraction</a></td><td><a class="yes" data-goto="mc-ext-08" data-phase="ext" href="#mc-ext-08">KQL</a></td><td><span class="no">&mdash;</span></td></tr><tr><td><a data-goto="mc-ext-09" data-phase="ext" href="#mc-ext-09"><code>EXT-09</code></a></td><td><a data-goto="mc-ext-09" data-phase="ext" href="#mc-ext-09" style="color:var(--ink)">Steganographic Data Transfer</a></td><td><a class="yes" data-goto="mc-ext-09" data-phase="ext" href="#mc-ext-09">KQL</a></td><td><a class="yes" data-goto="mc-ext-09" data-phase="ext" href="#mc-ext-09">YARA</a></td></tr><tr><td><a data-goto="mc-ext-10" data-phase="ext" href="#mc-ext-10"><code>EXT-10</code></a></td><td><a data-goto="mc-ext-10" data-phase="ext" href="#mc-ext-10" style="color:var(--ink)">Multi-Channel Redundant Exfiltration</a></td><td><a class="yes" data-goto="mc-ext-10" data-phase="ext" href="#mc-ext-10">KQL</a></td><td><span class="no">&mdash;</span></td></tr></tbody></table></div><h2>Rules by phase</h2><div class="det-tabs" role="tablist"><button class="det-tab active" data-phase="ing" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>Ingress</button><button class="det-tab" data-phase="act" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Activation</button><button class="det-tab" data-phase="anc" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>Anchoring</button><button class="det-tab" data-phase="con" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>Concealment</button><button class="det-tab" data-phase="exp" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>Expansion</button><button class="det-tab" data-phase="ext" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Extraction</button></div><div class="det-rules" id="detRules"><section class="det-phase active" data-phase="ing"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg></span><h2>Ingress<span class="tag">ING</span></h2></div><p style="color:var(--muted);margin-top:-.2em">How malware enters systems. 7 techniques &middot; copy any rule below.</p><div class="det-rule" id="mc-ing-01"><div class="det-rule-h"><span class="pill red">ING-01</span><b>Removable Media &amp; File Transfer</b><a class="det-open" href="p/ing/mc-ing-01.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Removable Media: execution or executable drop from removable drives
+DeviceFileEvents
+| where Timestamp &gt; ago(14d)
+| where InitiatingProcessAccountName != &quot;system&quot;
+| where FolderPath matches regex @&quot;^[D-Z]:\\&quot; and (FileName endswith &quot;.exe&quot; or FileName endswith &quot;.lnk&quot; or FileName endswith &quot;.scr&quot; or FileName == &quot;autorun.inf&quot;)
+| project Timestamp, DeviceName, FileName, FolderPath, InitiatingProcessAccountName, SHA256
+| join kind=leftouter (
+    DeviceProcessEvents | where FolderPath matches regex @&quot;^[D-Z]:\\&quot;
+    | project DeviceName, ExecFolder=FolderPath, ProcessCommandLine
+) on DeviceName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ING_01_Removable_Media_Autorun
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ING-01 Removable Media &amp; File Transfer&quot;
+        description = &quot;Autorun.inf abusing removable media to auto-launch a payload&quot;
+    strings:
+        $a = &quot;[autorun]&quot; ascii nocase
+        $b = &quot;open=&quot; ascii nocase
+        $c = &quot;shellexecute=&quot; ascii nocase
+        $d = &quot;shell\\open\\command&quot; ascii nocase
+        $exe = &quot;.exe&quot; ascii nocase
+    condition:
+        $a and 1 of ($b,$c,$d) and $exe
+}</code></pre></div></div><div class="det-rule" id="mc-ing-02"><div class="det-rule-h"><span class="pill red">ING-02</span><b>Malvertising &amp; Drive-By Downloads</b><a class="det-open" href="p/ing/mc-ing-02.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Malvertising / Drive-by: browser spawning script interpreters or writing executables
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where InitiatingProcessFileName in~ (&quot;chrome.exe&quot;,&quot;msedge.exe&quot;,&quot;firefox.exe&quot;,&quot;iexplore.exe&quot;,&quot;brave.exe&quot;)
+| where FileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;,&quot;cmd.exe&quot;,&quot;wscript.exe&quot;,&quot;cscript.exe&quot;,&quot;mshta.exe&quot;,&quot;rundll32.exe&quot;,&quot;regsvr32.exe&quot;)
+| project Timestamp, DeviceName, InitiatingProcessFileName, FileName, ProcessCommandLine, AccountName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ING_02_Malvertising_HTA_Dropper
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ING-02 Malvertising &amp; Drive-By Downloads&quot;
+        description = &quot;HTA/JS drive-by dropper invoking script hosts or downloads&quot;
+    strings:
+        $hta = &quot;&lt;hta:application&quot; ascii nocase
+        $ws  = &quot;WScript.Shell&quot; ascii nocase
+        $ado = &quot;ADODB.Stream&quot; ascii nocase
+        $xhr = &quot;MSXML2.XMLHTTP&quot; ascii nocase
+        $ps  = &quot;powershell&quot; ascii nocase
+    condition:
+        ($hta or $ws) and 2 of ($ado,$xhr,$ps)
+}</code></pre></div></div><div class="det-rule" id="mc-ing-03"><div class="det-rule-h"><span class="pill red">ING-03</span><b>Supply Chain Compromise</b><a class="det-open" href="p/ing/mc-ing-03.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Supply Chain: unexpected child process from a signed updater / installer
+DeviceProcessEvents
+| where Timestamp &gt; ago(30d)
+| where InitiatingProcessFileName has_any (&quot;update&quot;,&quot;installer&quot;,&quot;setup&quot;,&quot;msiexec.exe&quot;)
+| where FileName in~ (&quot;powershell.exe&quot;,&quot;cmd.exe&quot;,&quot;wscript.exe&quot;,&quot;cscript.exe&quot;,&quot;rundll32.exe&quot;,&quot;regsvr32.exe&quot;,&quot;bitsadmin.exe&quot;,&quot;curl.exe&quot;,&quot;certutil.exe&quot;)
+| where ProcessCommandLine has_any (&quot;http://&quot;,&quot;https://&quot;,&quot;-enc&quot;,&quot;DownloadString&quot;,&quot;Invoke-WebRequest&quot;)
+| project Timestamp, DeviceName, InitiatingProcessFileName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ING_03_Supply_Chain_Installer_Backdoor
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ING-03 Supply Chain Compromise&quot;
+        description = &quot;Installer/updater carrying embedded shell or download logic&quot;
+    strings:
+        $u1 = &quot;cmd.exe /c&quot; ascii nocase
+        $u2 = &quot;powershell -&quot; ascii nocase
+        $u3 = &quot;DownloadString&quot; ascii nocase
+        $u4 = &quot;certutil -urlcache&quot; ascii nocase
+        $msi = &quot;Windows Installer&quot; ascii nocase
+    condition:
+        $msi and 2 of ($u1,$u2,$u3,$u4)
+}</code></pre></div></div><div class="det-rule" id="mc-ing-04"><div class="det-rule-h"><span class="pill red">ING-04</span><b>Credential Abuse</b><a class="det-open" href="p/ing/mc-ing-04.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Credential Abuse: successful sign-ins from anomalous locations / impossible travel (identity)
+IdentityLogonEvents
+| where Timestamp &gt; ago(7d)
+| where ActionType == &quot;LogonSuccess&quot;
+| summarize Countries=dcount(tostring(parse_json(AdditionalFields).Country)), Locations=make_set(tostring(parse_json(AdditionalFields).Country)) by AccountUpn, bin(Timestamp, 1h)
+| where Countries &gt; 1
+| project Timestamp, AccountUpn, Countries, Locations</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-ing-05"><div class="det-rule-h"><span class="pill red">ING-05</span><b>Malicious or Compromised USB Devices</b><a class="det-open" href="p/ing/mc-ing-05.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Malicious USB: new PnP HID / storage device followed by rapid process execution
+DeviceEvents
+| where Timestamp &gt; ago(14d)
+| where ActionType in (&quot;PnpDeviceConnected&quot;,&quot;UsbDriveMounted&quot;)
+| project ConnectTime=Timestamp, DeviceName, AdditionalFields
+| join kind=inner (
+    DeviceProcessEvents
+    | where FileName in~ (&quot;cmd.exe&quot;,&quot;powershell.exe&quot;,&quot;wscript.exe&quot;,&quot;mshta.exe&quot;)
+    | project ExecTime=Timestamp, DeviceName, FileName, ProcessCommandLine
+) on DeviceName
+| where ExecTime between (ConnectTime .. (ConnectTime + 2m))</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ING_05_BadUSB_HID_Payload
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ING-05 Malicious or Compromised USB Devices&quot;
+        description = &quot;Rubber Ducky / BadUSB keystroke-injection script artifacts&quot;
+    strings:
+        $d1 = &quot;DELAY &quot; ascii
+        $d2 = &quot;STRING &quot; ascii
+        $d3 = &quot;GUI r&quot; ascii
+        $d4 = &quot;ENTER&quot; ascii
+        $d5 = &quot;duckyscript&quot; ascii nocase
+    condition:
+        $d5 or (3 of ($d1,$d2,$d3,$d4))
+}</code></pre></div></div><div class="det-rule" id="mc-ing-06"><div class="det-rule-h"><span class="pill red">ING-06</span><b>Watering Hole Attacks</b><a class="det-open" href="p/ing/mc-ing-06.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Watering Hole: navigation to a compromised site then payload retrieval
+DeviceNetworkEvents
+| where Timestamp &gt; ago(7d)
+| where InitiatingProcessFileName in~ (&quot;chrome.exe&quot;,&quot;msedge.exe&quot;,&quot;firefox.exe&quot;)
+| where RemoteUrl has_any (&quot;.hta&quot;,&quot;.jar&quot;,&quot;.ps1&quot;,&quot;.js&quot;,&quot;.vbs&quot;,&quot;.scr&quot;)
+| project Timestamp, DeviceName, RemoteUrl, RemoteIP, InitiatingProcessFileName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ING_06_Watering_Hole_Injected_Script
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ING-06 Watering Hole Attacks&quot;
+        description = &quot;Obfuscated JS injected into web content for selective delivery&quot;
+    strings:
+        $s1 = &quot;eval(&quot; ascii
+        $s2 = &quot;String.fromCharCode(&quot; ascii
+        $s3 = &quot;unescape(&quot; ascii
+        $s4 = &quot;document.write(&quot; ascii
+        $s5 = &quot;atob(&quot; ascii
+    condition:
+        3 of them
+}</code></pre></div></div><div class="det-rule" id="mc-ing-07"><div class="det-rule-h"><span class="pill red">ING-07</span><b>External Remote Services</b><a class="det-open" href="p/ing/mc-ing-07.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// External Remote Services: external RDP/VPN success followed by admin tool use
+DeviceLogonEvents
+| where Timestamp &gt; ago(7d)
+| where LogonType in (&quot;RemoteInteractive&quot;,&quot;Network&quot;) and ActionType == &quot;LogonSuccess&quot;
+| where RemoteIPType == &quot;Public&quot;
+| project Timestamp, DeviceName, AccountName, RemoteIP, LogonType</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div></section><section class="det-phase" data-phase="act"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><h2>Activation<span class="tag">ACT</span></h2></div><p style="color:var(--muted);margin-top:-.2em">Running malicious code. 7 techniques &middot; copy any rule below.</p><div class="det-rule" id="mc-act-01"><div class="det-rule-h"><span class="pill red">ACT-01</span><b>User-Executed Files</b><a class="det-open" href="p/act/mc-act-01.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// User-Executed Files: process launched from Downloads/Temp by a user session
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FolderPath has_any (@&quot;\Downloads\&quot;, @&quot;\Temp\&quot;, @&quot;\AppData\Local\Temp\&quot;, @&quot;\Users\Public\&quot;)
+| where InitiatingProcessFileName in~ (&quot;explorer.exe&quot;,&quot;outlook.exe&quot;,&quot;winrar.exe&quot;,&quot;7zFM.exe&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, FolderPath, InitiatingProcessFileName, ProcessCommandLine, SHA256</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ACT_01_Office_Macro_Executor
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ACT-01 User-Executed Files&quot;
+        description = &quot;Office document with auto-exec VBA spawning a shell&quot;
+    strings:
+        $a1 = &quot;AutoOpen&quot; ascii nocase
+        $a2 = &quot;Document_Open&quot; ascii nocase
+        $a3 = &quot;Auto_Open&quot; ascii nocase
+        $s1 = &quot;Shell(&quot; ascii nocase
+        $s2 = &quot;WScript.Shell&quot; ascii nocase
+        $s3 = &quot;CreateObject&quot; ascii nocase
+    condition:
+        1 of ($a*) and 1 of ($s*)
+}</code></pre></div></div><div class="det-rule" id="mc-act-02"><div class="det-rule-h"><span class="pill red">ACT-02</span><b>Script-Based Execution</b><a class="det-open" href="p/act/mc-act-02.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Script-Based Execution: encoded / obfuscated interpreter command lines
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;,&quot;wscript.exe&quot;,&quot;cscript.exe&quot;,&quot;mshta.exe&quot;)
+| where ProcessCommandLine has_any (&quot;-enc&quot;,&quot;-e &quot;,&quot;FromBase64String&quot;,&quot;IEX&quot;,&quot;Invoke-Expression&quot;,&quot;-nop&quot;,&quot;-w hidden&quot;,&quot;bypass&quot;,&quot;DownloadString&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ACT_02_Obfuscated_Script
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ACT-02 Script-Based Execution&quot;
+        description = &quot;Base64/encoded PowerShell or script-based in-memory execution&quot;
+    strings:
+        $p1 = &quot;FromBase64String&quot; ascii nocase
+        $p2 = &quot;-enc&quot; ascii nocase
+        $p3 = &quot;IEX&quot; ascii
+        $p4 = &quot;Invoke-Expression&quot; ascii nocase
+        $p5 = &quot;-w hidden&quot; ascii nocase
+        $p6 = &quot;-nop&quot; ascii nocase
+    condition:
+        2 of them
+}</code></pre></div></div><div class="det-rule" id="mc-act-03"><div class="det-rule-h"><span class="pill red">ACT-03</span><b>Service-Based Execution</b><a class="det-open" href="p/act/mc-act-03.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Service-Based Execution: new service created for code execution
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName =~ &quot;sc.exe&quot; and ProcessCommandLine has &quot;create&quot;
+    or (InitiatingProcessFileName =~ &quot;services.exe&quot; and FileName in~ (&quot;cmd.exe&quot;,&quot;powershell.exe&quot;))
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-act-04"><div class="det-rule-h"><span class="pill red">ACT-04</span><b>DLL Side-Loading or Hijacking</b><a class="det-open" href="p/act/mc-act-04.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// DLL Side-Loading: signed app loading an unsigned DLL from its own directory
+DeviceImageLoadEvents
+| where Timestamp &gt; ago(7d)
+| where InitiatingProcessFolderPath !startswith &quot;C:\\Windows&quot;
+| where FolderPath =~ InitiatingProcessFolderPath
+| where isempty(Signer) or SignatureStatus != &quot;Valid&quot;
+| where FileName endswith &quot;.dll&quot;
+| project Timestamp, DeviceName, InitiatingProcessFileName, FileName, FolderPath, SignatureStatus</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ACT_04_DLL_SideLoad_Proxy
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ACT-04 DLL Side-Loading or Hijacking&quot;
+        description = &quot;Proxy DLL exporting forwarders plus payload staging APIs&quot;
+    strings:
+        $e1 = &quot;LoadLibraryA&quot; ascii
+        $e2 = &quot;GetProcAddress&quot; ascii
+        $f1 = &quot;.dll&quot; ascii nocase
+        $a1 = &quot;VirtualProtect&quot; ascii
+        $a2 = &quot;CreateThread&quot; ascii
+    condition:
+        uint16(0) == 0x5A4D and $e1 and $e2 and $f1 and 1 of ($a*)
+}</code></pre></div></div><div class="det-rule" id="mc-act-05"><div class="det-rule-h"><span class="pill red">ACT-05</span><b>WMI-Based Execution</b><a class="det-open" href="p/act/mc-act-05.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// WMI-Based Execution: wmiprvse spawning interpreters (remote/lateral exec)
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where InitiatingProcessFileName =~ &quot;wmiprvse.exe&quot;
+| where FileName in~ (&quot;powershell.exe&quot;,&quot;cmd.exe&quot;,&quot;wscript.exe&quot;,&quot;mshta.exe&quot;,&quot;rundll32.exe&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-act-06"><div class="det-rule-h"><span class="pill red">ACT-06</span><b>Browser Extension Execution</b><a class="det-open" href="p/act/mc-act-06.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Browser Extension Execution: new/modified extension manifest with broad permissions
+DeviceFileEvents
+| where Timestamp &gt; ago(14d)
+| where FolderPath has_any (@&quot;\Extensions\&quot;, @&quot;\Extension Settings\&quot;)
+| where FileName in~ (&quot;manifest.json&quot;,&quot;background.js&quot;,&quot;content.js&quot;)
+| project Timestamp, DeviceName, FolderPath, FileName, InitiatingProcessFileName, SHA256</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ACT_06_Malicious_Browser_Extension
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ACT-06 Browser Extension Execution&quot;
+        description = &quot;Extension manifest requesting broad permissions + remote code&quot;
+    strings:
+        $m = &quot;manifest_version&quot; ascii
+        $p1 = &quot;\&quot;&lt;all_urls&gt;\&quot;&quot; ascii
+        $p2 = &quot;webRequest&quot; ascii
+        $p3 = &quot;tabs&quot; ascii
+        $c1 = &quot;eval(&quot; ascii
+        $c2 = &quot;chrome.runtime.onMessage&quot; ascii
+    condition:
+        $m and 1 of ($p*) and 1 of ($c*)
+}</code></pre></div></div><div class="det-rule" id="mc-act-07"><div class="det-rule-h"><span class="pill red">ACT-07</span><b>Boot / Firmware Execution</b><a class="det-open" href="p/act/mc-act-07.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Boot / Firmware Execution: bootloader / BCD tampering utilities
+DeviceProcessEvents
+| where Timestamp &gt; ago(30d)
+| where FileName in~ (&quot;bcdedit.exe&quot;,&quot;bootcfg.exe&quot;,&quot;mountvol.exe&quot;) and ProcessCommandLine has_any (&quot;set&quot;,&quot;/set&quot;,&quot;testsigning&quot;,&quot;nointegritychecks&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div></section><section class="det-phase" data-phase="anc"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg></span><h2>Anchoring<span class="tag">ANC</span></h2></div><p style="color:var(--muted);margin-top:-.2em">Maintaining presence. 8 techniques &middot; copy any rule below.</p><div class="det-rule" id="mc-anc-01"><div class="det-rule-h"><span class="pill red">ANC-01</span><b>Startup &amp; Logon Execution</b><a class="det-open" href="p/anc/mc-anc-01.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Startup &amp; Logon: Run key or Startup-folder persistence created
+union
+(DeviceRegistryEvents
+ | where ActionType in (&quot;RegistryValueSet&quot;,&quot;RegistryKeyCreated&quot;)
+ | where RegistryKey has_any (@&quot;\CurrentVersion\Run&quot;, @&quot;\CurrentVersion\RunOnce&quot;, @&quot;\Winlogon&quot;)
+ | project Timestamp, DeviceName, RegistryKey, RegistryValueName, RegistryValueData, InitiatingProcessFileName),
+(DeviceFileEvents
+ | where FolderPath has @&quot;\Start Menu\Programs\Startup\&quot;
+ | project Timestamp, DeviceName, FolderPath, FileName, InitiatingProcessFileName)</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-anc-02"><div class="det-rule-h"><span class="pill red">ANC-02</span><b>Scheduled &amp; Triggered Execution</b><a class="det-open" href="p/anc/mc-anc-02.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Scheduled &amp; Triggered: task created via schtasks/PowerShell with suspicious action
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where (FileName =~ &quot;schtasks.exe&quot; and ProcessCommandLine has &quot;/create&quot;)
+    or (FileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;) and ProcessCommandLine has &quot;Register-ScheduledTask&quot;)
+| where ProcessCommandLine has_any (&quot;powershell&quot;,&quot;cmd&quot;,&quot;mshta&quot;,&quot;rundll32&quot;,&quot;http&quot;,&quot;AppData&quot;,&quot;Temp&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-anc-03"><div class="det-rule-h"><span class="pill red">ANC-03</span><b>Service &amp; Daemon Persistence</b><a class="det-open" href="p/anc/mc-anc-03.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Service &amp; Daemon Persistence: auto-start service pointing to user-writable path
+DeviceRegistryEvents
+| where Timestamp &gt; ago(14d)
+| where RegistryKey has @&quot;\Services\&quot; and RegistryValueName == &quot;ImagePath&quot;
+| where RegistryValueData has_any (@&quot;\Users\&quot;, @&quot;\Temp\&quot;, @&quot;\AppData\&quot;, @&quot;\ProgramData\&quot;, &quot;powershell&quot;, &quot;cmd /c&quot;)
+| project Timestamp, DeviceName, RegistryKey, RegistryValueData, InitiatingProcessFileName</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-anc-04"><div class="det-rule-h"><span class="pill red">ANC-04</span><b>Registry-Based Persistence</b><a class="det-open" href="p/anc/mc-anc-04.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Registry-Based Persistence: less-common autostart locations
+DeviceRegistryEvents
+| where Timestamp &gt; ago(14d)
+| where RegistryKey has_any (@&quot;\Image File Execution Options&quot;, @&quot;\AppInit_DLLs&quot;, @&quot;\Userinit&quot;, @&quot;\Shell&quot;, @&quot;\CurrentVersion\Policies\Explorer\Run&quot;)
+| project Timestamp, DeviceName, RegistryKey, RegistryValueName, RegistryValueData, InitiatingProcessFileName</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-anc-05"><div class="det-rule-h"><span class="pill red">ANC-05</span><b>Browser-Based Persistence</b><a class="det-open" href="p/anc/mc-anc-05.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Browser-Based Persistence: registry-forced extension load / DebuggerPath
+DeviceRegistryEvents
+| where Timestamp &gt; ago(14d)
+| where RegistryKey has_any (@&quot;\ExtensionInstallForcelist&quot;, @&quot;\Chrome\NativeMessagingHosts&quot;, @&quot;\Edge\NativeMessagingHosts&quot;)
+| project Timestamp, DeviceName, RegistryKey, RegistryValueName, RegistryValueData, InitiatingProcessFileName</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-anc-06"><div class="det-rule-h"><span class="pill red">ANC-06</span><b>WMI &amp; Event Subscription Persistence</b><a class="det-open" href="p/anc/mc-anc-06.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// WMI Event Subscription Persistence: permanent consumer/binding creation
+DeviceProcessEvents
+| where Timestamp &gt; ago(30d)
+| where ProcessCommandLine has_any (&quot;__EventFilter&quot;,&quot;CommandLineEventConsumer&quot;,&quot;ActiveScriptEventConsumer&quot;,&quot;__FilterToConsumerBinding&quot;,&quot;root\subscription&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ANC_06_WMI_Event_Consumer
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ANC-06 WMI &amp; Event Subscription Persistence&quot;
+        description = &quot;Script creating permanent WMI event subscription persistence&quot;
+    strings:
+        $a = &quot;__EventFilter&quot; ascii nocase
+        $b = &quot;CommandLineEventConsumer&quot; ascii nocase
+        $c = &quot;ActiveScriptEventConsumer&quot; ascii nocase
+        $d = &quot;__FilterToConsumerBinding&quot; ascii nocase
+        $e = &quot;root\\subscription&quot; ascii nocase
+    condition:
+        2 of them
+}</code></pre></div></div><div class="det-rule" id="mc-anc-07"><div class="det-rule-h"><span class="pill red">ANC-07</span><b>Fileless &amp; In-Memory Persistence</b><a class="det-open" href="p/anc/mc-anc-07.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Fileless &amp; In-Memory Persistence: registry blob storing encoded payload
+DeviceRegistryEvents
+| where Timestamp &gt; ago(14d)
+| where strlen(RegistryValueData) &gt; 2048
+| where RegistryValueData matches regex @&quot;[A-Za-z0-9+/]{500,}={0,2}&quot;
+| project Timestamp, DeviceName, RegistryKey, RegistryValueName, DataLen=strlen(RegistryValueData), InitiatingProcessFileName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_ANC_07_Fileless_Registry_Payload_Loader
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-ANC-07 Fileless &amp; In-Memory Persistence&quot;
+        description = &quot;Loader reading an encoded payload from the registry into memory&quot;
+    strings:
+        $r1 = &quot;Get-ItemProperty&quot; ascii nocase
+        $r2 = &quot;RegOpenKeyEx&quot; ascii
+        $b1 = &quot;FromBase64String&quot; ascii nocase
+        $m1 = &quot;VirtualAlloc&quot; ascii
+        $m2 = &quot;[Reflection.Assembly]::Load&quot; ascii nocase
+    condition:
+        (1 of ($r*)) and $b1 and (1 of ($m*))
+}</code></pre></div></div><div class="det-rule" id="mc-anc-08"><div class="det-rule-h"><span class="pill red">ANC-08</span><b>Boot &amp; Pre-OS Persistence</b><a class="det-open" href="p/anc/mc-anc-08.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Boot &amp; Pre-OS Persistence: bootkit / raw disk write tooling
+DeviceProcessEvents
+| where Timestamp &gt; ago(30d)
+| where FileName in~ (&quot;bcdedit.exe&quot;,&quot;bootim.exe&quot;,&quot;reagentc.exe&quot;) and ProcessCommandLine has_any (&quot;set&quot;,&quot;disable&quot;,&quot;/set&quot;)
+    or ProcessCommandLine has_any (@&quot;\.\PhysicalDrive0&quot;, &quot;\Device\Harddisk0&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div></section><section class="det-phase" data-phase="con"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span><h2>Concealment<span class="tag">CON</span></h2></div><p style="color:var(--muted);margin-top:-.2em">Avoiding detection. 10 techniques &middot; copy any rule below.</p><div class="det-rule" id="mc-con-01"><div class="det-rule-h"><span class="pill red">CON-01</span><b>Obfuscation &amp; Packing</b><a class="det-open" href="p/con/mc-con-01.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Obfuscation &amp; Packing: newly written PE with very high entropy sections
+DeviceFileEvents
+| where Timestamp &gt; ago(7d)
+| where FileName endswith &quot;.exe&quot; or FileName endswith &quot;.dll&quot;
+| where FolderPath has_any (@&quot;\Temp\&quot;, @&quot;\AppData\&quot;, @&quot;\ProgramData\&quot;, @&quot;\Users\Public\&quot;)
+| project Timestamp, DeviceName, FileName, FolderPath, SHA256, InitiatingProcessFileName
+// Pivot SHA256 into a sandbox/entropy source; alert on packer indicators (UPX/MPRESS/Themida)</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_01_Packed_Executable
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-01 Obfuscation &amp; Packing&quot;
+        description = &quot;Common runtime packer section names in a PE&quot;
+    strings:
+        $upx0 = &quot;UPX0&quot; ascii
+        $upx1 = &quot;UPX1&quot; ascii
+        $mpress = &quot;.MPRESS1&quot; ascii
+        $aspack = &quot;.aspack&quot; ascii
+        $themida = &quot;Themida&quot; ascii nocase
+        $petite = &quot;.petite&quot; ascii
+    condition:
+        uint16(0) == 0x5A4D and 1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-con-02"><div class="det-rule-h"><span class="pill red">CON-02</span><b>Fileless Malware Execution</b><a class="det-open" href="p/con/mc-con-02.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Fileless Execution: interpreter with no file, downloading &amp; running in memory
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;)
+| where ProcessCommandLine has_any (&quot;IEX&quot;,&quot;Invoke-Expression&quot;,&quot;DownloadString&quot;,&quot;Reflection.Assembly&quot;,&quot;[Convert]::FromBase64String&quot;,&quot;VirtualAlloc&quot;)
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_02_Fileless_Reflective_Loader
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-02 Fileless Malware Execution&quot;
+        description = &quot;In-memory reflective loading / shellcode allocation primitives&quot;
+    strings:
+        $a1 = &quot;VirtualAlloc&quot; ascii
+        $a2 = &quot;VirtualAllocEx&quot; ascii
+        $a3 = &quot;RtlMoveMemory&quot; ascii
+        $a4 = &quot;CreateThread&quot; ascii
+        $a5 = &quot;[Reflection.Assembly]::Load&quot; ascii nocase
+        $a6 = &quot;ReflectiveLoader&quot; ascii
+    condition:
+        3 of them
+}</code></pre></div></div><div class="det-rule" id="mc-con-03"><div class="det-rule-h"><span class="pill red">CON-03</span><b>Security Tool Tampering</b><a class="det-open" href="p/con/mc-con-03.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Security Tool Tampering: defender / EDR service or exclusion manipulation
+union
+(DeviceProcessEvents
+ | where ProcessCommandLine has_any (&quot;Set-MpPreference&quot;,&quot;DisableRealtimeMonitoring&quot;,&quot;Add-MpPreference -ExclusionPath&quot;,&quot;sc stop&quot;,&quot;net stop&quot;) and ProcessCommandLine has_any (&quot;defender&quot;,&quot;sense&quot;,&quot;windefend&quot;,&quot;MsMpEng&quot;,&quot;exclusion&quot;)
+ | project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine),
+(DeviceRegistryEvents
+ | where RegistryKey has @&quot;\Windows Defender&quot; and RegistryValueName in (&quot;DisableAntiSpyware&quot;,&quot;DisableRealtimeMonitoring&quot;)
+ | project Timestamp, DeviceName, RegistryKey, RegistryValueData, InitiatingProcessFileName)</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_03_Security_Tool_Tampering
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-03 Security Tool Tampering&quot;
+        description = &quot;Commands disabling AV/EDR or adding exclusions&quot;
+    strings:
+        $a = &quot;Set-MpPreference&quot; ascii nocase
+        $b = &quot;DisableRealtimeMonitoring&quot; ascii nocase
+        $c = &quot;Add-MpPreference -ExclusionPath&quot; ascii nocase
+        $d = &quot;sc stop WinDefend&quot; ascii nocase
+        $e = &quot;DisableAntiSpyware&quot; ascii nocase
+    condition:
+        1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-con-04"><div class="det-rule-h"><span class="pill red">CON-04</span><b>Masquerading &amp; Impersonation</b><a class="det-open" href="p/con/mc-con-04.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Masquerading: system-named binary running from a non-system path
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;svchost.exe&quot;,&quot;lsass.exe&quot;,&quot;services.exe&quot;,&quot;csrss.exe&quot;,&quot;winlogon.exe&quot;,&quot;explorer.exe&quot;)
+| where FolderPath !startswith &quot;C:\\Windows&quot;
+| project Timestamp, DeviceName, FileName, FolderPath, ProcessCommandLine, SHA256</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_04_Masquerade_System_Name
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-04 Masquerading &amp; Impersonation&quot;
+        description = &quot;PE claiming a core Windows original filename but lacking MS company&quot;
+    strings:
+        $n1 = &quot;svchost.exe&quot; wide ascii nocase
+        $n2 = &quot;lsass.exe&quot; wide ascii nocase
+        $n3 = &quot;services.exe&quot; wide ascii nocase
+        $ms = &quot;Microsoft Corporation&quot; wide ascii
+    condition:
+        uint16(0) == 0x5A4D and 1 of ($n*) and not $ms
+}</code></pre></div></div><div class="det-rule" id="mc-con-05"><div class="det-rule-h"><span class="pill red">CON-05</span><b>Environment &amp; Sandbox Evasion</b><a class="det-open" href="p/con/mc-con-05.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Sandbox / Environment Evasion: reconnaissance of VM &amp; analysis artifacts
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where ProcessCommandLine has_any (&quot;vmware&quot;,&quot;vbox&quot;,&quot;virtualbox&quot;,&quot;qemu&quot;,&quot;sbiedll&quot;,&quot;wireshark&quot;,&quot;procmon&quot;,&quot;Win32_ComputerSystem&quot;,&quot;NumberOfCores&quot;)
+| where FileName in~ (&quot;wmic.exe&quot;,&quot;powershell.exe&quot;,&quot;reg.exe&quot;,&quot;cmd.exe&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_05_Sandbox_Evasion_Strings
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-05 Environment &amp; Sandbox Evasion&quot;
+        description = &quot;Anti-VM / anti-analysis artifact strings&quot;
+    strings:
+        $v1 = &quot;VBoxGuest&quot; ascii nocase
+        $v2 = &quot;vmware&quot; ascii nocase
+        $v3 = &quot;vmtoolsd&quot; ascii nocase
+        $v4 = &quot;SbieDll.dll&quot; ascii nocase
+        $v5 = &quot;QEMU&quot; ascii
+        $v6 = &quot;IsDebuggerPresent&quot; ascii
+        $v7 = &quot;CheckRemoteDebuggerPresent&quot; ascii
+    condition:
+        3 of them
+}</code></pre></div></div><div class="det-rule" id="mc-con-06"><div class="det-rule-h"><span class="pill red">CON-06</span><b>Process Injection</b><a class="det-open" href="p/con/mc-con-06.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Process Injection: cross-process handle open + remote thread indicators
+DeviceEvents
+| where Timestamp &gt; ago(7d)
+| where ActionType in (&quot;CreateRemoteThreadApiCall&quot;,&quot;WriteToLsassProcessMemory&quot;,&quot;QueueUserApcRemoteApiCall&quot;,&quot;SetThreadContextRemoteApiCall&quot;)
+| project Timestamp, DeviceName, ActionType, InitiatingProcessFileName, FileName, AdditionalFields</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_06_Process_Injection_Primitives
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-06 Process Injection&quot;
+        description = &quot;Classic remote-injection / process-hollowing API set&quot;
+    strings:
+        $a1 = &quot;OpenProcess&quot; ascii
+        $a2 = &quot;VirtualAllocEx&quot; ascii
+        $a3 = &quot;WriteProcessMemory&quot; ascii
+        $a4 = &quot;CreateRemoteThread&quot; ascii
+        $a5 = &quot;NtUnmapViewOfSection&quot; ascii
+        $a6 = &quot;SetThreadContext&quot; ascii
+        $a7 = &quot;QueueUserAPC&quot; ascii
+    condition:
+        uint16(0) == 0x5A4D and 3 of them
+}</code></pre></div></div><div class="det-rule" id="mc-con-07"><div class="det-rule-h"><span class="pill red">CON-07</span><b>Polymorphism &amp; Metamorphism</b><a class="det-open" href="p/con/mc-con-07.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Polymorphism/Metamorphism: many distinct hashes, same filename across fleet
+DeviceFileEvents
+| where Timestamp &gt; ago(14d)
+| where ActionType == &quot;FileCreated&quot;
+| summarize DistinctHashes=dcount(SHA256), Hosts=dcount(DeviceName) by FileName
+| where DistinctHashes &gt; 10 and Hosts &gt; 3
+| project FileName, DistinctHashes, Hosts</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_07_Polymorphic_Loader
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-07 Polymorphism &amp; Metamorphism&quot;
+        description = &quot;Self-modifying / runtime-decrypting loader primitives&quot;
+    strings:
+        $a1 = &quot;VirtualProtect&quot; ascii
+        $a2 = &quot;WriteProcessMemory&quot; ascii
+        $x1 = { 33 ?? 88 ?? ?? 40 }        // xor/store/inc decrypt-loop shape
+        $x2 = { 80 34 ?? ?? 40 3B }        // xor byte ptr [reg+key]; inc; cmp
+    condition:
+        uint16(0) == 0x5A4D and 1 of ($a*) and 1 of ($x*)
+}</code></pre></div></div><div class="det-rule" id="mc-con-08"><div class="det-rule-h"><span class="pill red">CON-08</span><b>Log &amp; Artifact Manipulation</b><a class="det-open" href="p/con/mc-con-08.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Log &amp; Artifact Manipulation: event-log clearing
+union
+(DeviceProcessEvents
+ | where (FileName =~ &quot;wevtutil.exe&quot; and ProcessCommandLine has_any (&quot;cl &quot;,&quot;clear-log&quot;))
+     or (FileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;) and ProcessCommandLine has &quot;Clear-EventLog&quot;)
+ | project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine),
+(DeviceEvents | where ActionType == &quot;SecurityLogCleared&quot; | project Timestamp, DeviceName, ActionType, InitiatingProcessFileName)</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_08_Log_Manipulation
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-08 Log &amp; Artifact Manipulation&quot;
+        description = &quot;Event log clearing / tampering commands&quot;
+    strings:
+        $a = &quot;wevtutil cl&quot; ascii nocase
+        $b = &quot;Clear-EventLog&quot; ascii nocase
+        $c = &quot;wevtutil clear-log&quot; ascii nocase
+        $d = &quot;Remove-EventLog&quot; ascii nocase
+    condition:
+        1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-con-09"><div class="det-rule-h"><span class="pill red">CON-09</span><b>Living-off-the-Land for Evasion</b><a class="det-open" href="p/con/mc-con-09.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Living-off-the-Land for Evasion: proxy execution via trusted binaries
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;regsvr32.exe&quot;,&quot;rundll32.exe&quot;,&quot;mshta.exe&quot;,&quot;installutil.exe&quot;,&quot;msbuild.exe&quot;,&quot;certutil.exe&quot;,&quot;regasm.exe&quot;,&quot;regsvcs.exe&quot;)
+| where ProcessCommandLine has_any (&quot;http&quot;,&quot;scrobj&quot;,&quot;javascript:&quot;,&quot;-decode&quot;,&quot;-urlcache&quot;,&quot;/i:&quot;,&quot;AppData&quot;,&quot;Temp&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_09_LOLBin_Proxy_Execution
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-09 Living-off-the-Land for Evasion&quot;
+        description = &quot;LOLBin proxy-execution command patterns&quot;
+    strings:
+        $a = &quot;regsvr32&quot; ascii nocase
+        $s = &quot;scrobj.dll&quot; ascii nocase
+        $b = &quot;mshta&quot; ascii nocase
+        $j = &quot;javascript:&quot; ascii nocase
+        $c = &quot;certutil&quot; ascii nocase
+        $u = &quot;-urlcache&quot; ascii nocase
+    condition:
+        ($a and $s) or ($b and $j) or ($c and $u)
+}</code></pre></div></div><div class="det-rule" id="mc-con-10"><div class="det-rule-h"><span class="pill red">CON-10</span><b>Anti-Forensics &amp; Cleanup</b><a class="det-open" href="p/con/mc-con-10.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Anti-Forensics: shadow copy deletion &amp; timestomping
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where ProcessCommandLine has_any (&quot;vssadmin delete shadows&quot;,&quot;wmic shadowcopy delete&quot;,&quot;Delete-VssShadow&quot;,&quot;fsutil usn deletejournal&quot;,&quot;bcdedit /set {default} recoveryenabled no&quot;,&quot;wbadmin delete catalog&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_CON_10_AntiForensics_Cleanup
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-CON-10 Anti-Forensics &amp; Cleanup&quot;
+        description = &quot;Shadow copy deletion / recovery disabling / journal wipe&quot;
+    strings:
+        $a = &quot;vssadmin delete shadows&quot; ascii nocase
+        $b = &quot;wmic shadowcopy delete&quot; ascii nocase
+        $c = &quot;wbadmin delete catalog&quot; ascii nocase
+        $d = &quot;fsutil usn deletejournal&quot; ascii nocase
+        $e = &quot;recoveryenabled no&quot; ascii nocase
+    condition:
+        1 of them
+}</code></pre></div></div></section><section class="det-phase" data-phase="exp"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span><h2>Expansion<span class="tag">EXP</span></h2></div><p style="color:var(--muted);margin-top:-.2em">Spreading within networks. 10 techniques &middot; copy any rule below.</p><div class="det-rule" id="mc-exp-01"><div class="det-rule-h"><span class="pill red">EXP-01</span><b>Living-off-the-Land Lateral Movement</b><a class="det-open" href="p/exp/mc-exp-01.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// LotL Lateral Movement: remote exec tools launched to another host
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;psexec.exe&quot;,&quot;psexesvc.exe&quot;,&quot;wmic.exe&quot;,&quot;winrs.exe&quot;) or (FileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;) and ProcessCommandLine has_any (&quot;Invoke-Command&quot;,&quot;New-PSSession&quot;,&quot;-ComputerName&quot;,&quot;Enter-PSSession&quot;))
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-exp-02"><div class="det-rule-h"><span class="pill red">EXP-02</span><b>Credential Reuse &amp; Relay</b><a class="det-open" href="p/exp/mc-exp-02.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Credential Reuse &amp; Relay: same account authenticating to many hosts quickly
+DeviceLogonEvents
+| where Timestamp &gt; ago(1d)
+| where ActionType == &quot;LogonSuccess&quot; and LogonType in (&quot;Network&quot;,&quot;RemoteInteractive&quot;)
+| summarize Hosts=dcount(DeviceName), HostSet=make_set(DeviceName,20) by AccountName, bin(Timestamp, 15m)
+| where Hosts &gt;= 5
+| project Timestamp, AccountName, Hosts, HostSet</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-exp-03"><div class="det-rule-h"><span class="pill red">EXP-03</span><b>Pass-the-Hash / Pass-the-Ticket</b><a class="det-open" href="p/exp/mc-exp-03.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Pass-the-Hash / Pass-the-Ticket: NTLM/Kerberos logon anomalies from lsass access
+DeviceLogonEvents
+| where Timestamp &gt; ago(3d)
+| where LogonType == &quot;Network&quot; and ActionType == &quot;LogonSuccess&quot;
+| where isempty(RemoteIP) == false
+| join kind=inner (DeviceEvents | where ActionType == &quot;OpenProcessApiCall&quot; and FileName =~ &quot;lsass.exe&quot; | project DeviceName, Timestamp) on DeviceName
+| project Timestamp, DeviceName, AccountName, RemoteIP, LogonType</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXP_03_Credential_Ticket_Tooling
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXP-03 Pass-the-Hash / Pass-the-Ticket&quot;
+        description = &quot;Mimikatz/Rubeus PtH/PtT command artifacts&quot;
+    strings:
+        $a = &quot;sekurlsa::pth&quot; ascii nocase
+        $b = &quot;sekurlsa::logonpasswords&quot; ascii nocase
+        $c = &quot;kerberos::ptt&quot; ascii nocase
+        $d = &quot;asktgt&quot; ascii nocase
+        $e = &quot;Rubeus&quot; ascii
+    condition:
+        1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-exp-04"><div class="det-rule-h"><span class="pill red">EXP-04</span><b>Remote Service &amp; Protocol Abuse</b><a class="det-open" href="p/exp/mc-exp-04.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Remote Service &amp; Protocol Abuse: remote service creation over the network
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName =~ &quot;sc.exe&quot; and ProcessCommandLine has_any (@&quot;\\&quot;, &quot;\\&quot;) and ProcessCommandLine has &quot;create&quot;
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-exp-05"><div class="det-rule-h"><span class="pill red">EXP-05</span><b>Network Share Propagation</b><a class="det-open" href="p/exp/mc-exp-05.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Network Share Propagation: writes of executables to admin/hidden shares
+DeviceFileEvents
+| where Timestamp &gt; ago(7d)
+| where FolderPath matches regex @&quot;\\\\[^\\]+\\(ADMIN\$|C\$|IPC\$)&quot;
+| where FileName endswith &quot;.exe&quot; or FileName endswith &quot;.dll&quot; or FileName endswith &quot;.bat&quot;
+| project Timestamp, DeviceName, FolderPath, FileName, InitiatingProcessFileName, SHA256</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-exp-06"><div class="det-rule-h"><span class="pill red">EXP-06</span><b>Worm-like Self-Propagation</b><a class="det-open" href="p/exp/mc-exp-06.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Worm-like Self-Propagation: one process writing identical binary to many hosts/shares
+DeviceFileEvents
+| where Timestamp &gt; ago(2d)
+| where ActionType == &quot;FileCreated&quot; and (FileName endswith &quot;.exe&quot; or FileName endswith &quot;.dll&quot;)
+| summarize Targets=dcount(DeviceName), Paths=dcount(FolderPath) by SHA256, InitiatingProcessFileName
+| where Targets &gt; 5 or Paths &gt; 20
+| project SHA256, InitiatingProcessFileName, Targets, Paths</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXP_06_Worm_SelfPropagation
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXP-06 Worm-like Self-Propagation&quot;
+        description = &quot;Self-copy to network shares / removable drives via enumeration&quot;
+    strings:
+        $a1 = &quot;WNetAddConnection2&quot; ascii
+        $a2 = &quot;GetLogicalDrives&quot; ascii
+        $a3 = &quot;CopyFile&quot; ascii
+        $s1 = &quot;\\ADMIN$&quot; ascii nocase
+        $s2 = &quot;\\C$&quot; ascii nocase
+        $s3 = &quot;autorun.inf&quot; ascii nocase
+    condition:
+        uint16(0) == 0x5A4D and 1 of ($a*) and 1 of ($s*)
+}</code></pre></div></div><div class="det-rule" id="mc-exp-07"><div class="det-rule-h"><span class="pill red">EXP-07</span><b>Privilege Escalation Across Hosts</b><a class="det-open" href="p/exp/mc-exp-07.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Privilege Escalation Across Hosts: token/UAC bypass &amp; elevation tooling
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where ProcessCommandLine has_any (&quot;SeDebugPrivilege&quot;,&quot;fodhelper.exe&quot;,&quot;eventvwr.exe&quot;,&quot;computerdefaults.exe&quot;,&quot;sdclt.exe&quot;,&quot;Invoke-TokenManipulation&quot;,&quot;getsystem&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-exp-08"><div class="det-rule-h"><span class="pill red">EXP-08</span><b>Identity &amp; Trust Relationship Abuse</b><a class="det-open" href="p/exp/mc-exp-08.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Identity &amp; Trust Relationship Abuse: golden/silver ticket &amp; delegation abuse recon
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where ProcessCommandLine has_any (&quot;kerberos::golden&quot;,&quot;kerberos::ptt&quot;,&quot;Add-KrbtgtKey&quot;,&quot;asktgt&quot;,&quot;s4u&quot;,&quot;/impersonateuser&quot;,&quot;Rubeus&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXP_08_Kerberos_Trust_Abuse
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXP-08 Identity &amp; Trust Relationship Abuse&quot;
+        description = &quot;Golden/silver ticket and delegation abuse artifacts&quot;
+    strings:
+        $a = &quot;kerberos::golden&quot; ascii nocase
+        $b = &quot;kerberos::silver&quot; ascii nocase
+        $c = &quot;/krbtgt&quot; ascii nocase
+        $d = &quot;s4u&quot; ascii nocase
+        $e = &quot;/impersonateuser&quot; ascii nocase
+    condition:
+        1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-exp-09"><div class="det-rule-h"><span class="pill red">EXP-09</span><b>Directory Services Targeting</b><a class="det-open" href="p/exp/mc-exp-09.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Directory Services Targeting: DCSync / mass LDAP enumeration
+union
+(DeviceProcessEvents
+ | where ProcessCommandLine has_any (&quot;lsadump::dcsync&quot;,&quot;dcsync&quot;,&quot;GetNCChanges&quot;,&quot;Get-ADReplAccount&quot;)
+ | project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine),
+(IdentityDirectoryEvents
+ | where ActionType == &quot;Directory Services replication&quot;
+ | project Timestamp, DeviceName=TargetDeviceName, AccountName=AccountUpn, ActionType)</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXP_09_DCSync_Directory_Attack
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXP-09 Directory Services Targeting&quot;
+        description = &quot;DCSync / directory replication abuse artifacts&quot;
+    strings:
+        $a = &quot;lsadump::dcsync&quot; ascii nocase
+        $b = &quot;GetNCChanges&quot; ascii
+        $c = &quot;DsGetNCChanges&quot; ascii
+        $d = &quot;Get-ADReplAccount&quot; ascii nocase
+    condition:
+        1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-exp-10"><div class="det-rule-h"><span class="pill red">EXP-10</span><b>Cloud &amp; Hybrid Lateral Movement</b><a class="det-open" href="p/exp/mc-exp-10.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Cloud &amp; Hybrid Lateral Movement: on-prem host reaching cloud IMDS / token endpoints
+DeviceNetworkEvents
+| where Timestamp &gt; ago(7d)
+| where RemoteUrl has_any (&quot;169.254.169.254&quot;,&quot;login.microsoftonline.com&quot;,&quot;sts.amazonaws.com&quot;,&quot;metadata.google.internal&quot;)
+| where InitiatingProcessFileName in~ (&quot;powershell.exe&quot;,&quot;pwsh.exe&quot;,&quot;curl.exe&quot;,&quot;python.exe&quot;,&quot;cmd.exe&quot;)
+| project Timestamp, DeviceName, RemoteUrl, InitiatingProcessFileName, InitiatingProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div></section><section class="det-phase" data-phase="ext"><div class="sec-h"><span class="si"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span><h2>Extraction<span class="tag">EXT</span></h2></div><p style="color:var(--muted);margin-top:-.2em">Stealing data. 10 techniques &middot; copy any rule below.</p><div class="det-rule" id="mc-ext-01"><div class="det-rule-h"><span class="pill red">EXT-01</span><b>HTTP / HTTPS Data Exfiltration</b><a class="det-open" href="p/ext/mc-ext-01.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// HTTP/HTTPS Exfil: large outbound upload to rare external host
+DeviceNetworkEvents
+| where Timestamp &gt; ago(7d)
+| where ActionType == &quot;ConnectionSuccess&quot; and RemoteIPType == &quot;Public&quot;
+| summarize SentBytes=sum(tolong(coalesce(SentBytes,0))) by DeviceName, RemoteIP, RemoteUrl, InitiatingProcessFileName, bin(Timestamp,1h)
+| where SentBytes &gt; 50000000
+| project Timestamp, DeviceName, RemoteUrl, RemoteIP, SentBytes, InitiatingProcessFileName</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-ext-02"><div class="det-rule-h"><span class="pill red">EXT-02</span><b>DNS Tunneling</b><a class="det-open" href="p/ext/mc-ext-02.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// DNS Tunneling: long / high-entropy subdomains and high query volume
+DeviceNetworkEvents
+| where Timestamp &gt; ago(3d)
+| where ActionType == &quot;DnsQueryResponse&quot; or isnotempty(RemoteUrl)
+| extend Sub = tostring(split(RemoteUrl, &quot;.&quot;)[0])
+| where strlen(Sub) &gt; 30
+| summarize Queries=count(), MaxLen=max(strlen(Sub)) by DeviceName, Domain=strcat(tostring(split(RemoteUrl,&quot;.&quot;)[-2]),&quot;.&quot;,tostring(split(RemoteUrl,&quot;.&quot;)[-1])), bin(Timestamp,1h)
+| where Queries &gt; 100
+| project Timestamp, DeviceName, Domain, Queries, MaxLen</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXT_02_DNS_Tunnel_Tooling
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXT-02 DNS Tunneling&quot;
+        description = &quot;Known DNS-tunnel tool markers / DNS TXT exfil routines&quot;
+    strings:
+        $a = &quot;iodine&quot; ascii nocase
+        $b = &quot;dnscat&quot; ascii nocase
+        $c = &quot;dns2tcp&quot; ascii nocase
+        $t = &quot;DNS_TYPE_TXT&quot; ascii
+        $q = &quot;DnsQuery_A&quot; ascii
+    condition:
+        1 of ($a,$b,$c) or ($t and $q)
+}</code></pre></div></div><div class="det-rule" id="mc-ext-03"><div class="det-rule-h"><span class="pill red">EXT-03</span><b>Cloud Storage Abuse</b><a class="det-open" href="p/ext/mc-ext-03.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Cloud Storage Abuse: upload utilities / SDKs contacting cloud storage
+DeviceNetworkEvents
+| where Timestamp &gt; ago(7d)
+| where RemoteUrl has_any (&quot;s3.amazonaws.com&quot;,&quot;blob.core.windows.net&quot;,&quot;storage.googleapis.com&quot;,&quot;dropboxapi.com&quot;,&quot;drive.google.com&quot;,&quot;mega.nz&quot;)
+| where InitiatingProcessFileName in~ (&quot;powershell.exe&quot;,&quot;curl.exe&quot;,&quot;rclone.exe&quot;,&quot;python.exe&quot;,&quot;cmd.exe&quot;,&quot;aws.exe&quot;)
+| project Timestamp, DeviceName, RemoteUrl, InitiatingProcessFileName, InitiatingProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-ext-04"><div class="det-rule-h"><span class="pill red">EXT-04</span><b>Messaging and Social Platform Channels</b><a class="det-open" href="p/ext/mc-ext-04.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Messaging/Social Channels: exfil via Telegram/Discord/webhook APIs
+DeviceNetworkEvents
+| where Timestamp &gt; ago(7d)
+| where RemoteUrl has_any (&quot;api.telegram.org&quot;,&quot;discord.com/api/webhooks&quot;,&quot;discordapp.com/api/webhooks&quot;,&quot;hooks.slack.com&quot;,&quot;pastebin.com&quot;)
+| where InitiatingProcessFileName !in~ (&quot;chrome.exe&quot;,&quot;msedge.exe&quot;,&quot;firefox.exe&quot;,&quot;teams.exe&quot;,&quot;slack.exe&quot;,&quot;discord.exe&quot;)
+| project Timestamp, DeviceName, RemoteUrl, InitiatingProcessFileName, InitiatingProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXT_04_Messaging_Channel_Exfil
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXT-04 Messaging and Social Platform Channels&quot;
+        description = &quot;Hardcoded Telegram/Discord webhook exfil endpoints&quot;
+    strings:
+        $a = &quot;api.telegram.org/bot&quot; ascii nocase
+        $b = &quot;discord.com/api/webhooks&quot; ascii nocase
+        $c = &quot;discordapp.com/api/webhooks&quot; ascii nocase
+        $d = &quot;hooks.slack.com/services&quot; ascii nocase
+    condition:
+        1 of them
+}</code></pre></div></div><div class="det-rule" id="mc-ext-05"><div class="det-rule-h"><span class="pill red">EXT-05</span><b>FTP / SFTP / FTPS Transfer</b><a class="det-open" href="p/ext/mc-ext-05.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// FTP/SFTP/FTPS Transfer: command-line FTP clients to external hosts
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName in~ (&quot;ftp.exe&quot;,&quot;winscp.com&quot;,&quot;winscp.exe&quot;,&quot;pscp.exe&quot;,&quot;psftp.exe&quot;,&quot;curl.exe&quot;) and ProcessCommandLine has_any (&quot;ftp://&quot;,&quot;sftp://&quot;,&quot;ftps://&quot;,&quot;-put&quot;,&quot;put &quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-ext-06"><div class="det-rule-h"><span class="pill red">EXT-06</span><b>Tor / Proxy / VPN Anonymization Channels</b><a class="det-open" href="p/ext/mc-ext-06.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Tor / Proxy / VPN Anonymization: connections to Tor / anonymizer infrastructure
+DeviceNetworkEvents
+| where Timestamp &gt; ago(7d)
+| where RemoteUrl has_any (&quot;.onion&quot;,&quot;torproject.org&quot;) or InitiatingProcessFileName in~ (&quot;tor.exe&quot;,&quot;obfs4proxy.exe&quot;,&quot;psiphon.exe&quot;)
+| project Timestamp, DeviceName, RemoteUrl, RemoteIP, InitiatingProcessFileName</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXT_06_Tor_Anonymizer_Artifacts
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXT-06 Tor / Proxy / VPN Anonymization Channels&quot;
+        description = &quot;Embedded Tor / onion routing artifacts&quot;
+    strings:
+        $a = &quot;.onion&quot; ascii nocase
+        $b = &quot;tor.exe&quot; ascii nocase
+        $c = &quot;obfs4proxy&quot; ascii nocase
+        $d = &quot;SOCKS5&quot; ascii
+        $e = &quot;torrc&quot; ascii nocase
+    condition:
+        2 of them
+}</code></pre></div></div><div class="det-rule" id="mc-ext-07"><div class="det-rule-h"><span class="pill red">EXT-07</span><b>Encrypted Command-and-Control Channels</b><a class="det-open" href="p/ext/mc-ext-07.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Encrypted C2: periodic beaconing (regular interval, small jitter) to one host
+DeviceNetworkEvents
+| where Timestamp &gt; ago(2d) and RemoteIPType == &quot;Public&quot; and ActionType == &quot;ConnectionSuccess&quot;
+| summarize Beacons=count(), Intervals=make_list(Timestamp,200) by DeviceName, RemoteIP, InitiatingProcessFileName
+| where Beacons &gt; 50
+| project DeviceName, RemoteIP, InitiatingProcessFileName, Beacons
+// Post-process Intervals for low standard-deviation to confirm beaconing</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXT_07_Encrypted_C2_Config
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXT-07 Encrypted Command-and-Control Channels&quot;
+        description = &quot;Beacon/C2 config primitives and known malleable markers&quot;
+    strings:
+        $a = &quot;User-Agent:&quot; ascii
+        $b = &quot;WinHttpConnect&quot; ascii
+        $c = &quot;InternetOpenA&quot; ascii
+        $bk = &quot;beacon.dll&quot; ascii nocase
+        $mz = &quot;ReflectiveLoader&quot; ascii
+    condition:
+        uint16(0) == 0x5A4D and ($bk or $mz or (2 of ($a,$b,$c)))
+}</code></pre></div></div><div class="det-rule" id="mc-ext-08"><div class="det-rule-h"><span class="pill red">EXT-08</span><b>Removable Media Data Extraction</b><a class="det-open" href="p/ext/mc-ext-08.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Removable Media Data Extraction: bulk copy of documents to removable drive
+DeviceFileEvents
+| where Timestamp &gt; ago(7d)
+| where ActionType == &quot;FileCreated&quot; and FolderPath matches regex @&quot;^[D-Z]:\\&quot;
+| where FileName has_any (&quot;.docx&quot;,&quot;.xlsx&quot;,&quot;.pdf&quot;,&quot;.pst&quot;,&quot;.zip&quot;,&quot;.7z&quot;,&quot;.sql&quot;,&quot;.csv&quot;)
+| summarize Files=count(), Bytes=sum(tolong(coalesce(FileSize,0))) by DeviceName, InitiatingProcessAccountName, bin(Timestamp,10m)
+| where Files &gt; 25
+| project Timestamp, DeviceName, InitiatingProcessAccountName, Files, Bytes</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div><div class="det-rule" id="mc-ext-09"><div class="det-rule-h"><span class="pill red">EXT-09</span><b>Steganographic Data Transfer</b><a class="det-open" href="p/ext/mc-ext-09.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Steganographic Data Transfer: stego tooling / image files with appended data
+DeviceProcessEvents
+| where Timestamp &gt; ago(14d)
+| where FileName in~ (&quot;steghide.exe&quot;,&quot;openstego.exe&quot;,&quot;outguess.exe&quot;,&quot;zsteg.exe&quot;) or ProcessCommandLine has_any (&quot;steghide&quot;,&quot;Add-Content -Encoding Byte&quot;,&quot;copy /b image&quot;,&quot;Invoke-PSImage&quot;)
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine</code></pre></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">yara</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="yara">rule MC_EXT_09_Steganography_Tooling
+{
+    meta:
+        author = &quot;MalChain&quot;
+        technique = &quot;MC-EXT-09 Steganographic Data Transfer&quot;
+        description = &quot;Steganography tools / PS image-embedding routines&quot;
+    strings:
+        $a = &quot;steghide&quot; ascii nocase
+        $b = &quot;OpenStego&quot; ascii nocase
+        $c = &quot;Invoke-PSImage&quot; ascii nocase
+        $d = &quot;outguess&quot; ascii nocase
+    condition:
+        1 of ($a,$b,$c,$d)
+}</code></pre></div></div><div class="det-rule" id="mc-ext-10"><div class="det-rule-h"><span class="pill red">EXT-10</span><b>Multi-Channel Redundant Exfiltration</b><a class="det-open" href="p/ext/mc-ext-10.html">Technique &rarr;</a></div><div class="codewrap">
+<div class="code-top"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="lang">kql</span>
+<button class="copy-btn" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="lbl">Copy</span></button></div>
+<pre><code data-lang="kql">// Multi-Channel Redundant Exfil: one process using several distinct egress channels
+DeviceNetworkEvents
+| where Timestamp &gt; ago(1d) and RemoteIPType == &quot;Public&quot;
+| summarize Channels=dcount(RemoteUrl), Protocols=make_set(RemotePort,10) by DeviceName, InitiatingProcessFileName, bin(Timestamp,30m)
+| where Channels &gt; 15
+| project Timestamp, DeviceName, InitiatingProcessFileName, Channels, Protocols</code></pre></div><div class="na-note">YARA not applicable to this behavioural / network-only technique &mdash; use the KQL rule above.</div></div></section></div></div></main>
+</div>
+<footer class="footer"><span>Mal<b>Chain</b> — behaviour-centric malware kill-chain framework</span><span>·</span><span>52 techniques · 52 KQL · 30 YARA</span><span>·</span><a href="https://malwarehunts.com" target="_blank" rel="noopener">malwarehunts.com</a></footer>
+<script src="assets/app.js?v=1783878887"></script>
+</body>
+</html>
